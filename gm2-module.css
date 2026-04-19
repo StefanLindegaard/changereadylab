@@ -135,8 +135,8 @@ h4{font-size:20px}
   color:var(--muted);
 }
 .module-card{
-  padding:26px;
-  margin:0 0 24px;
+  padding:32px;
+  margin:0 0 32px;
 }
 .module-head{
   display:flex;
