@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChangeReadyLab Community</title>
+  <meta name="description" content="Register to learn, get access to tools, and help shape the early community around ChangeReadyLab." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">ChangeReadyLab<small>Community and early access</small></a>
+      <nav class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="gapmap.html">Gap Map</a>
+        <a href="#register">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap grid-2">
+      <section class="card">
+        <div class="kicker">Early access and peer learning</div>
+        <h1 style="font-size:clamp(2rem,4vw,3rem);line-height:1.08;margin:0 0 14px;">Register to learn, get access to tools, and grow with peers</h1>
+        <p>This is the first step toward a small ChangeReadyLab community. For now, it is intentionally simple. You can register your interest, indicate how you would like to engage, and send your details directly to Stefan.</p>
+        <p>The idea is to build a practical learning space around change readiness for leadership teams. That can include early access to tools, pilot invitations, simple peer sharing, and updates as the platform evolves.</p>
+        <div class="notice small">This page does not yet have a full membership system. It creates a ready-to-send message to Stefan and keeps things light while the concept is being tested.</div>
+        <div class="inline-actions">
+          <a class="btn" href="gapmap.html">Explore the Gap Map</a>
+          <a class="btn secondary" href="mailto:stefan@stefanlindegaard.com?subject=ChangeReadyLab%20Community%20Interest">Send a direct email instead</a>
+        </div>
+      </section>
+
+      <section class="card" id="register">
+        <h2>Register your interest</h2>
+        <form id="communityForm" class="form-grid">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="your@email.com" required />
+          </div>
+          <div>
+            <label for="role">Role / company</label>
+            <input id="role" type="text" placeholder="Example: HR Director, Leadership Team member, OD lead" />
+          </div>
+          <div>
+            <label for="interest">What are you most interested in?</label>
+            <select id="interest">
+              <option>Trying the tools</option>
+              <option>Running a pilot with my team</option>
+              <option>Learning and receiving updates</option>
+              <option>Connecting with peers</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">A few words about your interest or context</label>
+            <textarea id="message" placeholder="What is happening in your team or organization right now, and why is this relevant?"></textarea>
+          </div>
+          <div class="checkbox-row">
+            <input id="consent" type="checkbox" />
+            <label for="consent" style="font-weight:600;margin:0;">I understand this is an early work in progress and that my details will be shared by email rather than through a full member system.</label>
+          </div>
+          <div class="inline-actions">
+            <button type="button" id="generateBtn">Create email message</button>
+            <button type="button" class="secondary" id="copyBtn">Copy message</button>
+          </div>
+        </form>
+        <div id="communityOutput" class="top-gap hidden">
+          <h3>Your message</h3>
+          <textarea id="outputText"></textarea>
+          <div class="inline-actions">
+            <a class="btn" id="emailLink" href="#">Open email app</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const generateBtn = document.getElementById('generateBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const outputWrap = document.getElementById('communityOutput');
+    const outputText = document.getElementById('outputText');
+    const emailLink = document.getElementById('emailLink');
+
+    function buildMessage() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const role = document.getElementById('role').value.trim();
+      const interest = document.getElementById('interest').value;
+      const message = document.getElementById('message').value.trim();
+      const consent = document.getElementById('consent').checked;
+
+      if (!name || !email) {
+        alert('Please add your name and email first.');
+        return null;
+      }
+      if (!consent) {
+        alert('Please confirm the early work in progress note before continuing.');
+        return null;
+      }
+
+      const text = [
+        'Hello Stefan,',
+        '',
+        'I would like to register my interest in ChangeReadyLab.',
+        '',
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Role / company: ${role || 'Not provided'}`,
+        `Main interest: ${interest}`,
+        '',
+        'Context / notes:',
+        message || 'No additional context shared yet.',
+        '',
+        'Best regards,',
+        name
+      ].join('\n');
+
+      return text;
+    }
+
+    generateBtn.addEventListener('click', () => {
+      const text = buildMessage();
+      if (!text) return;
+      outputText.value = text;
+      outputWrap.classList.remove('hidden');
+      const subject = encodeURIComponent('ChangeReadyLab community interest');
+      const body = encodeURIComponent(text);
+      emailLink.href = `mailto:stefan@stefanlindegaard.com?subject=${subject}&body=${body}`;
+      localStorage.setItem('changeReadyLabCommunityDraft', text);
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      const text = buildMessage();
+      if (!text) return;
+      outputText.value = text;
+      outputWrap.classList.remove('hidden');
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('Message copied. You can paste it into an email if needed.');
+      } catch (e) {
+        alert('Could not copy automatically. Please copy the message manually from the box below.');
+      }
+    });
+
+    const saved = localStorage.getItem('changeReadyLabCommunityDraft');
+    if (saved) {
+      outputText.value = saved;
+      outputWrap.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

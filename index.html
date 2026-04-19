@@ -3,676 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Change Readiness Gap Map</title>
-  <style>
-    :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #1e293b;
-      --muted: #64748b;
-      --line: #dbe3ef;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --good: #166534;
-      --warn: #92400e;
-      --bad: #991b1b;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --radius: 16px;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 20px 80px;
-    }
-    .hero {
-      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-      margin-bottom: 22px;
-    }
-    h1, h2, h3 { margin: 0 0 12px; line-height: 1.2; }
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.35rem; }
-    p { margin: 0 0 12px; }
-    .muted { color: var(--muted); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-    }
-    .card {
-      grid-column: span 12;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-    @media (min-width: 900px) {
-      .span-7 { grid-column: span 7; }
-      .span-5 { grid-column: span 5; }
-      .span-6 { grid-column: span 6; }
-    }
-    label { display: block; font-weight: 600; margin-bottom: 6px; }
-    input[type="text"], textarea, select {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #fff;
-      font: inherit;
-      color: var(--text);
-    }
-    textarea { min-height: 90px; resize: vertical; }
-    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    button {
-      appearance: none;
-      border: none;
-      border-radius: 12px;
-      padding: 11px 16px;
-      background: var(--accent);
-      color: white;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    button.secondary {
-      background: white;
-      color: var(--text);
-      border: 1px solid var(--line);
-    }
-    button.ghost {
-      background: var(--accent-soft);
-      color: #1d4ed8;
-    }
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #1d4ed8;
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-right: 8px;
-      margin-bottom: 8px;
-    }
-    .indicator-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .indicator-item {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: #fff;
-    }
-    .indicator-item strong { display: block; margin-bottom: 4px; }
-    .small { font-size: 0.92rem; }
-    .score-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.8fr 0.8fr;
-      gap: 10px;
-      align-items: center;
-    }
-    .range-group {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    input[type="range"] { width: 100%; }
-    .score-box {
-      text-align: center;
-      font-weight: 700;
-      background: #f8fafc;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px;
-    }
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 12px;
-    }
-    .table th, .table td {
-      border-bottom: 1px solid var(--line);
-      padding: 10px 8px;
-      text-align: left;
-      vertical-align: top;
-      font-size: 0.95rem;
-    }
-    .tag-low { color: var(--good); font-weight: 700; }
-    .tag-medium { color: var(--warn); font-weight: 700; }
-    .tag-high { color: var(--bad); font-weight: 700; }
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-    .summary-box {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: #fff;
-    }
-    .top-gap {
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: 14px;
-      background: #f8fafc;
-      border: 1px solid var(--line);
-    }
-    .hidden { display: none; }
-    .footer-note {
-      margin-top: 18px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .linkbox {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .linkbox input { flex: 1; }
-    .alert {
-      padding: 12px 14px;
-      border: 1px solid #bfdbfe;
-      background: #eff6ff;
-      border-radius: 12px;
-      color: #1e40af;
-      margin-top: 12px;
-    }
-  </style>
+  <title>ChangeReadyLab | Practical tools for leadership teams</title>
+  <meta name="description" content="ChangeReadyLab helps leadership teams strengthen change readiness through practical tools, reflection, and better alignment in day to day work." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="wrap">
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">ChangeReadyLab<small>Practical tools for leadership teams</small></a>
+      <nav class="navlinks">
+        <a href="#what">What we do</a>
+        <a href="#how">How we work</a>
+        <a href="#tools">Tools</a>
+        <a href="community.html">Community</a>
+        <a href="#contact">Contact</a>
+        <a class="btn secondary" href="gapmap.html">Open Gap Map</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
     <section class="hero">
-      <h1>Change Readiness Gap Map</h1>
-      <p>A lightweight prototype for leadership teams to choose seven change readiness indicators, vote on current and desired state, and see where the biggest gaps and alignment issues are.</p>
-      <p class="muted">This version is intentionally simple. It runs in one browser, stores data locally, and can generate a shareable snapshot link. For true team-wide live collaboration later, you would add a backend and user access.</p>
+      <div class="wrap hero-grid">
+        <div class="hero-card card">
+          <div class="kicker">Early prototype and work in progress</div>
+          <h1>Helping leadership teams become more change ready in real work situations</h1>
+          <p class="lead">ChangeReadyLab is a simple digital home for practical tools, reflection, and action around change readiness. The focus is not abstract culture talk. It is how leadership teams actually behave when priorities shift, pressure rises, and alignment becomes harder.</p>
+          <p class="muted">The intellectual engine behind this work is Growth Mindset 2.0. In practical terms, that means understanding how learning, openness, experimentation, feedback, and behavior under pressure show up in day to day leadership work.</p>
+          <div class="inline-actions">
+            <a class="btn" href="gapmap.html">Try the Change Readiness Gap Map</a>
+            <a class="btn secondary" href="community.html">Register to learn and get access</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="assets/team-spiral.jpeg" alt="Three stylized figures representing team thinking, insight, and collaboration" />
+        </div>
+      </div>
     </section>
 
-    <div class="grid">
-      <section class="card span-7" id="setupCard">
-        <h2>1. Set up your team Gap Map</h2>
-        <label for="teamName">Team name</label>
-        <input id="teamName" type="text" placeholder="Example: ALK Digital Leadership Team" />
-
-        <label for="facilitatorName" style="margin-top: 14px;">Facilitator or owner</label>
-        <input id="facilitatorName" type="text" placeholder="Example: Stefan Lindegaard" />
-
-        <label for="teamContext" style="margin-top: 14px;">Context or current focus</label>
-        <textarea id="teamContext" placeholder="Example: We are navigating organizational change, higher workload, and new expectations around AI and cross-functional collaboration."></textarea>
-
-        <div style="margin-top: 16px;">
-          <strong>Select exactly 7 indicators</strong>
-          <p class="muted small">This prototype uses a built-in library. Later, this can become your plug-in style indicator library with categories, suggested bundles, and custom additions.</p>
-          <div id="selectedCount" class="pill">0 of 7 selected</div>
-          <div id="indicatorLibrary" class="indicator-list"></div>
+    <section class="section" id="what">
+      <div class="wrap grid-3">
+        <div class="card">
+          <div class="stat">What we do</div>
+          <p>We build practical tools and simple digital experiences that help leadership teams assess, discuss, and improve their change readiness. The aim is to make important patterns visible and easier to act on.</p>
         </div>
-
-        <div class="btn-row">
-          <button id="createMapBtn" disabled>Create Gap Map</button>
-          <button class="secondary" id="resetAllBtn">Reset all</button>
+        <div class="card">
+          <div class="stat">How we do it</div>
+          <p>We start with real situations, real behavior, and real team dynamics. Then we use light structure, shared language, and practical tools to create better reflection, alignment, and action.</p>
         </div>
-      </section>
+        <div class="card">
+          <div class="stat">Why this matters</div>
+          <p>Many leadership teams understand change in theory. The challenge comes when workload rises, decisions become harder, and different views on the same reality start to pull the team apart.</p>
+        </div>
+      </div>
+    </section>
 
-      <section class="card span-5">
-        <h2>How this first prototype works</h2>
-        <p>You choose seven indicators from a library. Each team member can then add their own ratings for current state and desired state. The app calculates averages, gap size, and alignment spread.</p>
-        <div class="summary-grid">
-          <div class="summary-box">
-            <strong>Current state</strong>
-            <p class="muted small">How the team experiences the topic today.</p>
+    <section class="section" id="how">
+      <div class="wrap grid-2">
+        <div class="card">
+          <h2>Growth Mindset 2.0 as the intellectual engine</h2>
+          <p>Growth mindset has been part of leadership conversations for years. The challenge is that it often stays too conceptual. Our angle is more practical. Growth Mindset 2.0 is about change readiness in action.</p>
+          <p>That includes how teams respond to mistakes and setbacks, how openly they discuss concerns, how quickly they learn from real work, how they handle uncertainty, and how willing they are to experiment and adapt.</p>
+          <p>The goal is not to label teams as fixed or growth minded. It is to help them see where they are now, where they want to go, and what behaviors will help them get there.</p>
+        </div>
+        <div class="card">
+          <h2>What this looks like in practice</h2>
+          <ul class="list-clean">
+            <li>Choose a set of change readiness indicators that fit the current team reality.</li>
+            <li>Let team members score current and desired state individually.</li>
+            <li>Use the alignment overview to see where perceptions differ inside the team.</li>
+            <li>Turn this into sharper dialogue, better prioritization, and practical next steps.</li>
+          </ul>
+          <div class="notice small">This first version is intentionally simple. It is designed to help you test the concept, share it with a small network, and learn what people find useful.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="wrap">
+        <div class="card tool-box">
+          <h2>Tools</h2>
+          <p>ChangeReadyLab is being built around a growing set of practical tools. Right now, one tool is live and ready to explore.</p>
+          <div class="grid-2" style="margin-top: 10px;">
+            <div class="card" style="box-shadow:none;">
+              <h3>Change Readiness Gap Map</h3>
+              <p>A simple assessment and dialogue tool for leadership teams. Teams choose seven indicators, score current and desired state, and see both the gap and the degree of alignment inside the team.</p>
+              <div class="mini-nav">
+                <span class="pill">Live now</span>
+                <span class="pill">Leadership team exercise</span>
+              </div>
+              <div class="inline-actions">
+                <a class="btn" href="gapmap.html">Open the Gap Map</a>
+              </div>
+            </div>
+            <div class="card" style="box-shadow:none;">
+              <h3>What may come next</h3>
+              <ul class="list-clean">
+                <li>Guided reflection tools tied to day to day leadership situations</li>
+                <li>Simple action planning around the top gaps and alignment issues</li>
+                <li>More structured team and facilitator guidance</li>
+                <li>Shared learning and peer access through a small community layer</li>
+              </ul>
+            </div>
           </div>
-          <div class="summary-box">
-            <strong>Desired state</strong>
-            <p class="muted small">Where the team wants to be in a realistic next phase.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap grid-2">
+        <div class="card">
+          <h2>Who this is for</h2>
+          <p>ChangeReadyLab is designed first and foremost for leadership teams. It is also relevant for HR, People, L&D, and organizational development functions that want more practical ways to support team alignment and change readiness.</p>
+          <p class="small muted">This first website and tool are intentionally modest. The aim is to learn, improve, and build from real use.</p>
+        </div>
+        <div class="card">
+          <h2>Join early and help shape what comes next</h2>
+          <p>If you would like to explore the tools, get updates, or be part of an early peer group around change readiness and leadership team development, the community page is the right place to start.</p>
+          <div class="inline-actions">
+            <a class="btn secondary" href="community.html">Go to Community</a>
           </div>
-          <div class="summary-box">
-            <strong>Gap</strong>
-            <p class="muted small">The distance between current and desired state.</p>
-          </div>
-          <div class="summary-box">
-            <strong>Alignment</strong>
-            <p class="muted small">How similarly or differently people see the same reality.</p>
-          </div>
         </div>
-        <div class="footer-note">Suggested next version: add user access, real-time team participation, and AI-generated summary text tied to your Change Readiness Engine language.</div>
-      </section>
+      </div>
+    </section>
+  </main>
 
-      <section class="card hidden" id="votingCard">
-        <h2>2. Team voting</h2>
-        <p id="votingIntro" class="muted"></p>
-
-        <label for="memberName">Team member name</label>
-        <input id="memberName" type="text" placeholder="Example: Madicken" />
-
-        <div id="scoreArea" class="indicator-list" style="margin-top: 14px;"></div>
-
-        <label for="memberComment" style="margin-top: 14px;">Optional comment</label>
-        <textarea id="memberComment" placeholder="What stands out to you when you look at this Gap Map?"></textarea>
-
-        <div class="btn-row">
-          <button id="saveResponseBtn">Save response</button>
-          <button class="secondary" id="clearFormBtn">Clear form</button>
+  <footer class="footer" id="contact">
+    <div class="wrap footer-grid">
+      <div>
+        <h3>Contact</h3>
+        <p>Stefan Lindegaard</p>
+        <p><a href="mailto:stefan@stefanlindegaard.com">stefan@stefanlindegaard.com</a></p>
+        <p class="small muted">If you are curious about early pilots, tailored versions, or collaboration around leadership teams, feel free to reach out.</p>
+      </div>
+      <div>
+        <h3>Newsletter and updates</h3>
+        <p class="small">For now, the easiest way to register interest is through the community page. That helps us keep this simple while we experiment and learn.</p>
+        <div class="inline-actions">
+          <a class="btn" href="community.html">Register now</a>
         </div>
-        <div id="saveMessage" class="alert hidden"></div>
-      </section>
-
-      <section class="card hidden" id="resultsCard">
-        <h2>3. Team overview</h2>
-        <div class="summary-grid">
-          <div class="summary-box"><strong id="responsesCount">0</strong><br /><span class="muted small">responses saved</span></div>
-          <div class="summary-box"><strong id="avgGap">0.0</strong><br /><span class="muted small">average team gap</span></div>
-          <div class="summary-box"><strong id="highestGap">-</strong><br /><span class="muted small">largest gap indicator</span></div>
-          <div class="summary-box"><strong id="highestSpread">-</strong><br /><span class="muted small">largest alignment issue</span></div>
-        </div>
-
-        <table class="table" id="resultsTable">
-          <thead>
-            <tr>
-              <th>Indicator</th>
-              <th>Current</th>
-              <th>Desired</th>
-              <th>Gap</th>
-              <th>Alignment spread</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-
-        <div class="top-gap" id="discussionBox"></div>
-
-        <div class="btn-row">
-          <button class="ghost" id="generateLinkBtn">Generate share snapshot link</button>
-          <button class="secondary" id="exportJsonBtn">Export JSON</button>
-          <label class="secondary" style="display:inline-flex; align-items:center; gap:8px; padding:11px 16px; border-radius:12px; border:1px solid var(--line); cursor:pointer;">
-            Import JSON
-            <input id="importJsonInput" type="file" accept="application/json" style="display:none;" />
-          </label>
-        </div>
-
-        <div class="linkbox hidden" id="shareBox">
-          <input id="shareLink" type="text" readonly />
-          <button class="secondary" id="copyShareBtn">Copy</button>
-        </div>
-      </section>
+      </div>
     </div>
-  </div>
-
-  <script>
-    const indicatorLibrary = [
-      { id: 'mistakes', title: 'Response to mistakes and setbacks', desc: 'How the team reacts when things go wrong, including openness, learning, and recovery speed.' },
-      { id: 'feedback', title: 'Quality of feedback under pressure', desc: 'How directly and constructively feedback is given when stakes are high.' },
-      { id: 'uncertainty', title: 'Decision-making under uncertainty', desc: 'How well the team can make progress without waiting for full clarity.' },
-      { id: 'crossfunctional', title: 'Cross-functional collaboration', desc: 'How effectively the team works across boundaries, dependencies, and competing priorities.' },
-      { id: 'experimentation', title: 'Willingness to experiment', desc: 'How ready the team is to test, learn, and adapt rather than over-plan.' },
-      { id: 'roleclarity', title: 'Role clarity during change', desc: 'How clearly people understand ownership, contribution, and expectations while things are shifting.' },
-      { id: 'learning', title: 'Learning from real work', desc: 'How consistently the team reflects on what happened and applies those lessons.' },
-      { id: 'stakeholder', title: 'Stakeholder alignment', desc: 'How well the team manages expectations, involvement, and communication across key stakeholders.' },
-      { id: 'communication', title: 'Leadership communication in change', desc: 'How clearly and consistently the team explains what is changing, why, and what it means.' },
-      { id: 'prioritization', title: 'Prioritization in complexity', desc: 'How well the team makes trade-offs, says no, and keeps focus when everything feels important.' },
-      { id: 'psychsafety', title: 'Psychological safety in tough moments', desc: 'How safe it feels to speak honestly, challenge, and admit uncertainty when pressure increases.' },
-      { id: 'followthrough', title: 'Follow-through and implementation', desc: 'How reliably the team turns decisions and discussions into action and visible progress.' },
-      { id: 'adaptability', title: 'Adaptability of leadership habits', desc: 'How willing the team is to adjust old habits, routines, and assumptions when reality changes.' },
-      { id: 'aiwork', title: 'Use of AI in workflows and decision support', desc: 'How practically and thoughtfully the team uses AI to improve work, learning, and decisions.' },
-      { id: 'energy', title: 'Energy and resilience through change', desc: 'How well the team maintains focus, confidence, and healthy momentum across demanding periods.' }
-    ];
-
-    const storeKey = 'change-readiness-gap-map-v1';
-    const setupCard = document.getElementById('setupCard');
-    const votingCard = document.getElementById('votingCard');
-    const resultsCard = document.getElementById('resultsCard');
-    const indicatorLibraryEl = document.getElementById('indicatorLibrary');
-    const selectedCountEl = document.getElementById('selectedCount');
-    const createMapBtn = document.getElementById('createMapBtn');
-    const resetAllBtn = document.getElementById('resetAllBtn');
-    const saveResponseBtn = document.getElementById('saveResponseBtn');
-    const clearFormBtn = document.getElementById('clearFormBtn');
-    const scoreArea = document.getElementById('scoreArea');
-    const saveMessage = document.getElementById('saveMessage');
-    const resultsTableBody = document.querySelector('#resultsTable tbody');
-    const responsesCountEl = document.getElementById('responsesCount');
-    const avgGapEl = document.getElementById('avgGap');
-    const highestGapEl = document.getElementById('highestGap');
-    const highestSpreadEl = document.getElementById('highestSpread');
-    const discussionBox = document.getElementById('discussionBox');
-    const generateLinkBtn = document.getElementById('generateLinkBtn');
-    const shareBox = document.getElementById('shareBox');
-    const shareLink = document.getElementById('shareLink');
-    const copyShareBtn = document.getElementById('copyShareBtn');
-    const exportJsonBtn = document.getElementById('exportJsonBtn');
-    const importJsonInput = document.getElementById('importJsonInput');
-
-    let state = {
-      teamName: '',
-      facilitatorName: '',
-      teamContext: '',
-      selectedIndicators: [],
-      responses: []
-    };
-
-    function saveState() {
-      localStorage.setItem(storeKey, JSON.stringify(state));
-    }
-
-    function loadState() {
-      const urlData = loadStateFromHash();
-      if (urlData) {
-        state = urlData;
-        renderAll(true);
-        return;
-      }
-      const raw = localStorage.getItem(storeKey);
-      if (raw) {
-        try {
-          state = JSON.parse(raw);
-        } catch (e) {}
-      }
-    }
-
-    function loadStateFromHash() {
-      const hash = location.hash.replace('#snapshot=', '');
-      if (!hash || location.hash.indexOf('#snapshot=') !== 0) return null;
-      try {
-        const decoded = decodeURIComponent(escape(atob(hash)));
-        return JSON.parse(decoded);
-      } catch (e) {
-        return null;
-      }
-    }
-
-    function generateHashSnapshot() {
-      const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
-      return `${location.origin}${location.pathname}#snapshot=${encoded}`;
-    }
-
-    function renderLibrary() {
-      indicatorLibraryEl.innerHTML = '';
-      indicatorLibrary.forEach(indicator => {
-        const checked = state.selectedIndicators.includes(indicator.id);
-        const item = document.createElement('label');
-        item.className = 'indicator-item';
-        item.innerHTML = `
-          <div style="display:flex; gap:12px; align-items:flex-start;">
-            <input type="checkbox" data-id="${indicator.id}" ${checked ? 'checked' : ''} style="margin-top:4px;" />
-            <div>
-              <strong>${indicator.title}</strong>
-              <div class="muted small">${indicator.desc}</div>
-            </div>
-          </div>
-        `;
-        indicatorLibraryEl.appendChild(item);
-      });
-
-      indicatorLibraryEl.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        cb.addEventListener('change', (e) => {
-          const id = e.target.dataset.id;
-          if (e.target.checked) {
-            if (state.selectedIndicators.length >= 7) {
-              e.target.checked = false;
-              alert('Please select exactly 7 indicators.');
-              return;
-            }
-            state.selectedIndicators.push(id);
-          } else {
-            state.selectedIndicators = state.selectedIndicators.filter(x => x !== id);
-          }
-          updateSelectionUi();
-          saveState();
-        });
-      });
-
-      updateSelectionUi();
-    }
-
-    function updateSelectionUi() {
-      selectedCountEl.textContent = `${state.selectedIndicators.length} of 7 selected`;
-      createMapBtn.disabled = state.selectedIndicators.length !== 7;
-    }
-
-    function getSelectedIndicatorObjects() {
-      return state.selectedIndicators.map(id => indicatorLibrary.find(x => x.id === id)).filter(Boolean);
-    }
-
-    function renderVotingForm() {
-      const selected = getSelectedIndicatorObjects();
-      scoreArea.innerHTML = '';
-      selected.forEach(ind => {
-        const item = document.createElement('div');
-        item.className = 'indicator-item';
-        item.innerHTML = `
-          <strong>${ind.title}</strong>
-          <div class="muted small" style="margin-bottom:10px;">${ind.desc}</div>
-          <div class="score-grid">
-            <div><strong class="small">Indicator</strong></div>
-            <div><strong class="small">Current</strong></div>
-            <div><strong class="small">Desired</strong></div>
-          </div>
-          <div class="score-grid" style="margin-top:8px;">
-            <div class="muted small">How does the team operate today versus where it should be in the next phase?</div>
-            <div>
-              <input type="range" min="1" max="10" value="5" data-role="current" data-id="${ind.id}" />
-              <div class="score-box" id="current-${ind.id}">5</div>
-            </div>
-            <div>
-              <input type="range" min="1" max="10" value="8" data-role="desired" data-id="${ind.id}" />
-              <div class="score-box" id="desired-${ind.id}">8</div>
-            </div>
-          </div>
-        `;
-        scoreArea.appendChild(item);
-      });
-      scoreArea.querySelectorAll('input[type="range"]').forEach(range => {
-        range.addEventListener('input', (e) => {
-          const id = e.target.dataset.id;
-          const role = e.target.dataset.role;
-          document.getElementById(`${role}-${id}`).textContent = e.target.value;
-        });
-      });
-    }
-
-    function alignmentLabel(stdDev) {
-      if (stdDev < 1.2) return '<span class="tag-low">High alignment</span>';
-      if (stdDev < 2.2) return '<span class="tag-medium">Medium alignment</span>';
-      return '<span class="tag-high">Low alignment</span>';
-    }
-
-    function stdDeviation(arr) {
-      if (!arr.length) return 0;
-      const mean = arr.reduce((a, b) => a + b, 0) / arr.length;
-      const variance = arr.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / arr.length;
-      return Math.sqrt(variance);
-    }
-
-    function average(arr) {
-      if (!arr.length) return 0;
-      return arr.reduce((a, b) => a + b, 0) / arr.length;
-    }
-
-    function getResults() {
-      const selected = getSelectedIndicatorObjects();
-      return selected.map(ind => {
-        const currentScores = state.responses.map(r => r.scores[ind.id]?.current).filter(v => typeof v === 'number');
-        const desiredScores = state.responses.map(r => r.scores[ind.id]?.desired).filter(v => typeof v === 'number');
-        const currentAvg = average(currentScores);
-        const desiredAvg = average(desiredScores);
-        const gap = desiredAvg - currentAvg;
-        const spread = stdDeviation(currentScores);
-        return { id: ind.id, title: ind.title, currentAvg, desiredAvg, gap, spread };
-      });
-    }
-
-    function renderResults() {
-      if (!state.responses.length || !state.selectedIndicators.length) {
-        resultsCard.classList.add('hidden');
-        return;
-      }
-      resultsCard.classList.remove('hidden');
-      const results = getResults();
-      resultsTableBody.innerHTML = '';
-      results.forEach(row => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${row.title}</td>
-          <td>${row.currentAvg.toFixed(1)}</td>
-          <td>${row.desiredAvg.toFixed(1)}</td>
-          <td>${row.gap.toFixed(1)}</td>
-          <td>${alignmentLabel(row.spread)}<div class="muted small">spread ${row.spread.toFixed(1)}</div></td>
-        `;
-        resultsTableBody.appendChild(tr);
-      });
-
-      const gaps = [...results].sort((a, b) => b.gap - a.gap);
-      const spreads = [...results].sort((a, b) => b.spread - a.spread);
-      const avgGap = average(results.map(r => r.gap));
-
-      responsesCountEl.textContent = state.responses.length;
-      avgGapEl.textContent = avgGap.toFixed(1);
-      highestGapEl.textContent = gaps[0] ? `${gaps[0].title} (${gaps[0].gap.toFixed(1)})` : '-';
-      highestSpreadEl.textContent = spreads[0] ? `${spreads[0].title} (${spreads[0].spread.toFixed(1)})` : '-';
-
-      discussionBox.innerHTML = `
-        <strong>Suggested discussion focus</strong>
-        <p style="margin-top:8px;">Start with <strong>${gaps[0]?.title || 'your highest gap area'}</strong>, where the biggest distance exists between current and desired state. Then discuss <strong>${spreads[0]?.title || 'your strongest alignment issue'}</strong>, where team members seem to experience reality differently. This often opens a more useful conversation than the average score alone.</p>
-        <p class="muted small" style="margin-top:8px;">For later versions, this section could become an AI-generated summary with practical prompts and links to relevant Change Readiness indicators, Team Dynamics Cards, or Gap Map actions.</p>
-      `;
-    }
-
-    function renderAll(fromHash = false) {
-      document.getElementById('teamName').value = state.teamName || '';
-      document.getElementById('facilitatorName').value = state.facilitatorName || '';
-      document.getElementById('teamContext').value = state.teamContext || '';
-      renderLibrary();
-      if (state.selectedIndicators.length === 7) {
-        votingCard.classList.remove('hidden');
-        document.getElementById('votingIntro').textContent = `${state.teamName || 'Your team'} selected ${state.selectedIndicators.length} indicators. Add each team member's view below.`;
-        renderVotingForm();
-      }
-      renderResults();
-      if (fromHash) {
-        shareBox.classList.remove('hidden');
-        shareLink.value = location.href;
-      }
-    }
-
-    createMapBtn.addEventListener('click', () => {
-      state.teamName = document.getElementById('teamName').value.trim();
-      state.facilitatorName = document.getElementById('facilitatorName').value.trim();
-      state.teamContext = document.getElementById('teamContext').value.trim();
-      saveState();
-      votingCard.classList.remove('hidden');
-      document.getElementById('votingIntro').textContent = `${state.teamName || 'Your team'} selected 7 indicators. Add each team member's view below.`;
-      renderVotingForm();
-      window.scrollTo({ top: votingCard.offsetTop - 20, behavior: 'smooth' });
-    });
-
-    saveResponseBtn.addEventListener('click', () => {
-      const memberName = document.getElementById('memberName').value.trim();
-      if (!memberName) {
-        alert('Please add a team member name.');
-        return;
-      }
-      const scores = {};
-      getSelectedIndicatorObjects().forEach(ind => {
-        const current = Number(document.querySelector(`input[data-role="current"][data-id="${ind.id}"]`).value);
-        const desired = Number(document.querySelector(`input[data-role="desired"][data-id="${ind.id}"]`).value);
-        scores[ind.id] = { current, desired };
-      });
-      state.responses.push({
-        memberName,
-        comment: document.getElementById('memberComment').value.trim(),
-        scores,
-        createdAt: new Date().toISOString()
-      });
-      saveState();
-      renderResults();
-      document.getElementById('memberName').value = '';
-      document.getElementById('memberComment').value = '';
-      renderVotingForm();
-      saveMessage.classList.remove('hidden');
-      saveMessage.textContent = `Saved response for ${memberName}. You now have ${state.responses.length} response(s).`;
-      setTimeout(() => saveMessage.classList.add('hidden'), 2500);
-      window.scrollTo({ top: resultsCard.offsetTop - 20, behavior: 'smooth' });
-    });
-
-    clearFormBtn.addEventListener('click', () => {
-      document.getElementById('memberName').value = '';
-      document.getElementById('memberComment').value = '';
-      renderVotingForm();
-    });
-
-    resetAllBtn.addEventListener('click', () => {
-      if (!confirm('Reset the full prototype data in this browser?')) return;
-      localStorage.removeItem(storeKey);
-      location.hash = '';
-      location.reload();
-    });
-
-    generateLinkBtn.addEventListener('click', () => {
-      const link = generateHashSnapshot();
-      shareBox.classList.remove('hidden');
-      shareLink.value = link;
-    });
-
-    copyShareBtn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(shareLink.value);
-        copyShareBtn.textContent = 'Copied';
-        setTimeout(() => copyShareBtn.textContent = 'Copy', 1200);
-      } catch (e) {
-        alert('Copy did not work in this browser. Please copy the link manually.');
-      }
-    });
-
-    exportJsonBtn.addEventListener('click', () => {
-      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'change-readiness-gap-map-data.json';
-      a.click();
-      URL.revokeObjectURL(a.href);
-    });
-
-    importJsonInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        try {
-          state = JSON.parse(reader.result);
-          saveState();
-          renderAll();
-          alert('JSON imported.');
-        } catch (err) {
-          alert('The JSON file could not be read.');
-        }
-      };
-      reader.readAsText(file);
-    });
-
-    document.getElementById('teamName').addEventListener('input', e => { state.teamName = e.target.value; saveState(); });
-    document.getElementById('facilitatorName').addEventListener('input', e => { state.facilitatorName = e.target.value; saveState(); });
-    document.getElementById('teamContext').addEventListener('input', e => { state.teamContext = e.target.value; saveState(); });
-
-    loadState();
-    renderAll();
-  </script>
+  </footer>
 </body>
 </html>
