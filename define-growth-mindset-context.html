@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Define Growth Mindset in Your Leadership Context | ChangeReadyLab</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --text:#1f2a3d;
+      --muted:#5e6b7a;
+      --line:#d9e1ec;
+      --brand:#335eea;
+      --brand-dark:#2749b8;
+      --brand-soft:#eef3ff;
+      --accent:#eaf0ff;
+      --shadow:0 14px 36px rgba(31,42,61,.08);
+      --radius:18px;
+      --warn:#fff7e8;
+      --ok:#e9f7ef;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#f7f9fc 0%, #f3f5fa 100%);
+      line-height:1.72;
+    }
+    .wrap{
+      width:min(1140px, calc(100% - 32px));
+      margin:0 auto;
+    }
+    .site-header{padding:28px 0 34px;}
+    .back-link{
+      display:inline-flex; align-items:center; color:var(--text);
+      text-decoration:none; margin-bottom:18px; font-weight:700;
+    }
+    .eyebrow{
+      display:inline-block; margin-bottom:14px; padding:7px 12px;
+      border:1px solid #d8e4ff; border-radius:999px; background:var(--brand-soft);
+      color:var(--brand-dark); font-size:13px; font-weight:700;
+    }
+    h1,h2,h3,h4{line-height:1.15; margin:0 0 16px; letter-spacing:-0.03em;}
+    h1{font-size:clamp(36px,5.3vw,58px); max-width:920px;}
+    h2{font-size:clamp(28px,3.2vw,38px);}
+    h3{font-size:24px;}
+    h4{font-size:19px;}
+    p{margin:0 0 16px;}
+    .lead{font-size:clamp(18px,2.2vw,24px); max-width:920px;}
+    .sublead,.small-muted{color:var(--muted);}
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap:12px; margin-top:22px;
+    }
+    .btn{
+      appearance:none; border:none; cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:13px 18px; border-radius:12px; font-size:15px; font-weight:700;
+    }
+    .btn.primary{background:var(--brand); color:#fff;}
+    .btn.primary:hover{background:var(--brand-dark);}
+    .btn.secondary{background:#fff; color:var(--text); border:1px solid var(--line);}
+    .status-row{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:26px;
+    }
+    .status-card,.section-card,.choice-card,.output-card,.expectation-card{
+      background:var(--card); border:1px solid rgba(31,42,61,.08);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+    }
+    .status-card{padding:18px;}
+    .status-label{display:block; font-size:13px; color:var(--muted); margin-bottom:6px;}
+    .section-card{padding:28px; margin-bottom:26px;}
+    .grid-2{display:grid; grid-template-columns:1.05fr .95fr; gap:26px;}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+    .principle-box{
+      margin-top:18px; padding:16px 18px; border-radius:14px;
+      background:var(--brand-soft); border:1px solid #d8e4ff;
+    }
+    .choice-list,.check-list{display:grid; gap:12px; margin:14px 0 18px;}
+    .choice-card,.expectation-card{
+      padding:14px 16px; cursor:pointer;
+    }
+    .choice-card.active,.expectation-card.active{
+      border:2px solid var(--brand); background:#f8fbff;
+    }
+    .choice-card input,.expectation-card input{margin-right:10px;}
+    textarea{
+      width:100%; padding:14px; border-radius:14px; border:1px solid var(--line);
+      font:inherit; resize:vertical; min-height:110px; background:#fff; margin-top:10px;
+    }
+    textarea:focus, input:focus, select:focus{
+      outline:2px solid rgba(51,94,234,.18); outline-offset:2px;
+    }
+    .scenario-box{
+      padding:18px; border:1px solid var(--line); border-radius:16px; background:#fff;
+      margin-top:16px;
+    }
+    .scenario-box h4{margin-bottom:10px;}
+    .feedback-box{
+      display:none; margin-top:16px; padding:18px; border-radius:14px;
+      background:#f8fbff; border:1px solid #d8e4ff;
+    }
+    .feedback-box.active{display:block;}
+    .pill{
+      display:inline-flex; align-items:center; padding:6px 10px;
+      border-radius:999px; font-size:12px; font-weight:700; margin-right:8px; margin-bottom:8px;
+      border:1px solid var(--line); background:#f7f9fc; color:var(--muted);
+    }
+    .expectation-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:12px;}
+    .mapping-table{display:grid; gap:12px; margin-top:16px;}
+    .mapping-row{
+      display:grid; grid-template-columns:1.5fr .8fr 1fr; gap:12px; align-items:center;
+      padding:14px 16px; border:1px solid var(--line); border-radius:14px; background:#fff;
+    }
+    .mapping-row.header{font-weight:700; background:#f8fbff;}
+    .mapping-row select{
+      width:100%; padding:10px; border:1px solid var(--line); border-radius:10px; background:#fff; font:inherit;
+    }
+    .output-card{padding:18px;}
+    .prompt-list{padding-left:20px;}
+    .site-footer{padding:12px 0 34px;}
+    .footer-inner{color:var(--muted); font-size:14px;}
+    @media (max-width: 960px){
+      .status-row,.grid-2,.grid-3,.expectation-grid,.mapping-row{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="back-link">← Back to ChangeReadyLab</a>
+      <div class="eyebrow">Standalone tool</div>
+      <h1>Define Growth Mindset in Your Leadership Context</h1>
+      <p class="lead">This tool helps you turn growth mindset from a general idea into a practical leadership standard. The aim is not to agree with the concept in principle, but to define what it should mean in your own context, where inconsistency is creating friction today, and what expectations you want to bring into the way your leadership team actually operates.</p>
+      <p class="sublead">It is built for individual leaders first, with the expectation that many will later use the output inside their leadership team. The tool therefore helps you diagnose current patterns, define expectations, translate them into real situations, and leave with a first implementation move.</p>
+      <div class="hero-actions">
+        <a href="#section1" class="btn primary">Start the tool</a>
+        <button id="exportBtn" class="btn secondary">Export notes</button>
+      </div>
+      <div class="status-row">
+        <div class="status-card"><span class="status-label">Sections completed</span><strong id="completedCount">0 / 5</strong></div>
+        <div class="status-card"><span class="status-label">Expectations selected</span><strong id="selectedCount">0 / 5</strong></div>
+        <div class="status-card"><span class="status-label">Progress saved</span><strong>In your browser</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="section1" class="section-card">
+      <h2>1. Reality check: where growth mindset breaks down</h2>
+      <div class="grid-2">
+        <article>
+          <p>Most leadership teams agree with the idea of growth mindset in principle. They support learning, feedback, openness, and development. The issue is rarely disagreement at the concept level. The issue is what happens when real work becomes more demanding. Uncertainty increases. Priorities conflict. Decisions become harder. Outcomes slip. Tension builds across functions or people.</p>
+          <p>That is where different interpretations of growth mindset begin to matter. One leader may see growth mindset as staying open and exploring. Another may see it as staying positive and moving on. A third may think it means being resilient and just pushing through. Each of these contains something useful, but when they are not made explicit, the team starts operating with different expectations. That is where inconsistency creates friction.</p>
+          <div class="principle-box">
+            <strong>Working principle</strong>
+            <p>Growth mindset is not defined by what a leadership team says it values. It is defined by how leaders make decisions, challenge assumptions, respond to mistakes, and collaborate when the situation becomes more difficult.</p>
+          </div>
+        </article>
+        <article>
+          <h3>Choose the statements that feel closest to your reality today</h3>
+          <div class="choice-list" id="realityChoices">
+            <label class="choice-card"><input type="checkbox" data-check="reality_1" /> <span>We talk about learning, but when pressure rises we often move quickly toward decisions before understanding is fully shared.</span></label>
+            <label class="choice-card"><input type="checkbox" data-check="reality_2" /> <span>We want openness, but certain tensions or difficult feedback remain harder to address directly than they should be.</span></label>
+            <label class="choice-card"><input type="checkbox" data-check="reality_3" /> <span>We believe in feedback and learning, but it becomes more difficult when the issue reflects back on our own leadership choices.</span></label>
+            <label class="choice-card"><input type="checkbox" data-check="reality_4" /> <span>Different leaders in our team likely use the term growth mindset in different ways, even if nobody says that openly.</span></label>
+            <label class="choice-card"><input type="checkbox" data-check="reality_5" /> <span>We are probably stronger at agreeing on the concept than at applying it consistently in difficult situations.</span></label>
+          </div>
+          <div class="hero-actions">
+            <button class="btn secondary" id="realityBtn">Generate reflection</button>
+          </div>
+          <div id="realityOutput" class="feedback-box"></div>
+          <textarea data-note="reality_note" placeholder="What feels most true or most uncomfortable in your current leadership context?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="section2" class="section-card">
+      <h2>2. Map where inconsistency creates friction</h2>
+      <p>The goal here is to make your current leadership reality more visible. Think of two recent situations where your leadership team had to work through uncertainty, pressure, disagreement, or conflicting priorities. Then work through the questions below. This is not about finding the perfect answer. It is about seeing the pattern more clearly.</p>
+      <div class="grid-2">
+        <article>
+          <div class="scenario-box">
+            <h4>Situation A</h4>
+            <p class="small-muted">Think of a recent leadership situation involving uncertainty, competing priorities, or difficult decisions.</p>
+            <textarea data-note="situation_a" placeholder="Describe the situation briefly. What made it demanding?"></textarea>
+            <div class="choice-list">
+              <label class="choice-card"><input type="radio" name="a_behavior" value="speed" /> <span>We moved quickly to closure and action.</span></label>
+              <label class="choice-card"><input type="radio" name="a_behavior" value="safe" /> <span>We kept the discussion constructive, but avoided some tension.</span></label>
+              <label class="choice-card"><input type="radio" name="a_behavior" value="learn" /> <span>We stayed open long enough to explore different views before deciding.</span></label>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="scenario-box">
+            <h4>Situation B</h4>
+            <p class="small-muted">Think of a second situation involving feedback, mistakes, cross functional friction, or a missed expectation.</p>
+            <textarea data-note="situation_b" placeholder="Describe the situation briefly. What made it demanding?"></textarea>
+            <div class="choice-list">
+              <label class="choice-card"><input type="radio" name="b_behavior" value="moveon" /> <span>We focused on solving the issue and moving on.</span></label>
+              <label class="choice-card"><input type="radio" name="b_behavior" value="partial" /> <span>We reflected on what happened, but not very deeply.</span></label>
+              <label class="choice-card"><input type="radio" name="b_behavior" value="examine" /> <span>We took time to examine assumptions, patterns, and what we needed to change.</span></label>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="hero-actions">
+        <button class="btn primary" id="frictionBtn">Analyze friction pattern</button>
+      </div>
+      <div id="frictionOutput" class="feedback-box"></div>
+    </section>
+
+    <section id="section3" class="section-card">
+      <h2>3. Define your growth mindset expectations</h2>
+      <p>This is the heart of the tool. Choose the 3–5 expectations that you believe should define growth mindset in your leadership context. These should not be abstract values. They should be standards for how your leadership team operates when things are unclear, demanding, or under pressure.</p>
+      <div class="expectation-grid" id="expectationGrid">
+        <label class="expectation-card"><input type="checkbox" data-expectation="raise" /> <span>We raise difficult issues early instead of avoiding them.</span></label>
+        <label class="expectation-card"><input type="checkbox" data-expectation="challenge" /> <span>We challenge assumptions before aligning too quickly.</span></label>
+        <label class="expectation-card"><input type="checkbox" data-expectation="uncertainty" /> <span>We stay with uncertainty long enough to understand what is really changing.</span></label>
+        <label class="expectation-card"><input type="checkbox" data-expectation="mistakes" /> <span>We treat mistakes and setbacks as input for learning, not something to move past too quickly.</span></label>
+        <label class="expectation-card"><input type="checkbox" data-expectation="feedback" /> <span>We use feedback, even when it is uncomfortable or reflects back on our own leadership.</span></label>
+        <label class="expectation-card"><input type="checkbox" data-expectation="cross" /> <span>We work from shared ownership instead of protecting only our own area or function.</span></label>
+        <label class="expectation-card"><input type="checkbox" data-expectation="reflect" /> <span>We create room to reflect and adjust instead of only pushing for speed.</span></label>
+        <label class="expectation-card"><input type="checkbox" data-expectation="visible" /> <span>We make our growth mindset expectations visible in decisions, discussions, and collaboration.</span></label>
+      </div>
+      <textarea data-note="expectation_custom" placeholder="If needed, add or refine one expectation in your own words."></textarea>
+      <div class="hero-actions">
+        <button class="btn secondary" id="expectationBtn">Review expectations</button>
+      </div>
+      <div id="expectationOutput" class="feedback-box"></div>
+    </section>
+
+    <section id="section4" class="section-card">
+      <h2>4. Translate expectations into real situations</h2>
+      <p>This is where many leadership teams stop too early. They agree on useful words, but do not translate them into visible behavior. Use the table below to decide where your chosen expectations need to show up first and what that means in practical leadership terms.</p>
+      <div class="mapping-table" id="mappingTable"></div>
+      <div class="grid-2">
+        <article>
+          <h3>What will change in your next leadership meeting?</h3>
+          <textarea data-note="next_meeting" placeholder="What will you do differently in your next leadership team discussion or meeting?"></textarea>
+        </article>
+        <article>
+          <h3>Where might this be harder than it sounds?</h3>
+          <textarea data-note="resistance_note" placeholder="What resistance, caution, or habit might make it harder to apply these expectations?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="section5" class="section-card">
+      <h2>5. Create shared ownership and next steps</h2>
+      <div class="grid-2">
+        <article>
+          <p>The value of this work comes from what happens next. If you do nothing with it, it remains an interesting personal reflection. If you bring it into your leadership team in a concrete way, it can begin shaping how the team operates and what your own employees experience from leadership.</p>
+          <ul class="prompt-list">
+            <li>What is the one most important inconsistency you want to address first?</li>
+            <li>What expectation do you most want your leadership team to live up to?</li>
+            <li>What is the first practical conversation or move that would bring this into the room?</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Build your next step</h3>
+          <textarea data-note="owner_gap" placeholder="The inconsistency I most want to address"></textarea>
+          <textarea data-note="owner_move" placeholder="The first conversation or action I want to take"></textarea>
+          <textarea data-note="owner_team" placeholder="How my leadership team should notice this and what I want us to discuss together"></textarea>
+          <textarea data-note="owner_employees" placeholder="How employees should eventually experience the difference if we get this right"></textarea>
+        </article>
+      </div>
+      <div class="hero-actions">
+        <button class="btn primary" id="summaryBtn">Create my leadership summary</button>
+      </div>
+      <div id="summaryOutput" class="feedback-box"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Created as a standalone tool for ChangeReadyLab.</p>
+      <p>This version is designed for individual leaders first, but with a strong bridge into leadership team learning and later impact on employees.</p>
+    </div>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = "define_growth_mindset_context_state";
+    const EXPECTATION_TEXT = {
+      raise:"We raise difficult issues early instead of avoiding them.",
+      challenge:"We challenge assumptions before aligning too quickly.",
+      uncertainty:"We stay with uncertainty long enough to understand what is really changing.",
+      mistakes:"We treat mistakes and setbacks as input for learning, not something to move past too quickly.",
+      feedback:"We use feedback, even when it is uncomfortable or reflects back on our own leadership.",
+      cross:"We work from shared ownership instead of protecting only our own area or function.",
+      reflect:"We create room to reflect and adjust instead of only pushing for speed.",
+      visible:"We make our growth mindset expectations visible in decisions, discussions, and collaboration."
+    };
+    const CONTEXT_OPTIONS = [
+      "Leadership meetings",
+      "Decision making under uncertainty",
+      "Cross-functional collaboration",
+      "Feedback and challenge",
+      "Mistakes and setbacks",
+      "Priority shifts and change"
+    ];
+
+    function defaultState(){
+      return {
+        completed:{section1:false,section2:false,section3:false,section4:false,section5:false},
+        notes:{},
+        checks:{},
+        answers:{},
+        mappings:{}
+      };
+    }
+    function loadState(){
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultState(); }
+      catch(e){ return defaultState(); }
+    }
+    let state = loadState();
+
+    function saveState(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateStatus();
+    }
+    function updateStatus(){
+      const completed = Object.values(state.completed).filter(Boolean).length;
+      const selected = Object.keys(state.checks).filter(k => k.startsWith("expectation_") && state.checks[k]).length;
+      document.getElementById("completedCount").textContent = `${completed} / 5`;
+      document.getElementById("selectedCount").textContent = `${selected} / 5`;
+    }
+    function checked(prefix){
+      return Object.keys(state.checks).filter(k => k.startsWith(prefix) && state.checks[k]);
+    }
+
+    function renderMappings(){
+      const selected = checked("expectation_").map(k => k.replace("expectation_",""));
+      const root = document.getElementById("mappingTable");
+      if(selected.length === 0){
+        root.innerHTML = `<div class="mapping-row header"><div>Selected expectation</div><div>Where it shows up first</div><div>What you will do differently</div></div>
+        <div class="mapping-row"><div>Please select 3–5 expectations in section 3 first.</div><div></div><div></div></div>`;
+        return;
+      }
+      let html = `<div class="mapping-row header"><div>Selected expectation</div><div>Where it shows up first</div><div>What you will do differently</div></div>`;
+      selected.forEach(key => {
+        const map = state.mappings[key] || {};
+        html += `
+          <div class="mapping-row">
+            <div>${EXPECTATION_TEXT[key]}</div>
+            <div>
+              <select data-map="${key}" data-type="context">
+                <option value="">Select</option>
+                ${CONTEXT_OPTIONS.map(c => `<option value="${c}" ${map.context===c?"selected":""}>${c}</option>`).join("")}
+              </select>
+            </div>
+            <div>
+              <select data-map="${key}" data-type="move">
+                <option value="">Select</option>
+                <option value="Name the issue earlier" ${map.move==="Name the issue earlier"?"selected":""}>Name the issue earlier</option>
+                <option value="Ask one more question before deciding" ${map.move==="Ask one more question before deciding"?"selected":""}>Ask one more question before deciding</option>
+                <option value="Invite challenge directly" ${map.move==="Invite challenge directly"?"selected":""}>Invite challenge directly</option>
+                <option value="Review what happened before moving on" ${map.move==="Review what happened before moving on"?"selected":""}>Review what happened before moving on</option>
+                <option value="Clarify shared ownership" ${map.move==="Clarify shared ownership"?"selected":""}>Clarify shared ownership</option>
+                <option value="Make expectations explicit" ${map.move==="Make expectations explicit"?"selected":""}>Make expectations explicit</option>
+              </select>
+            </div>
+          </div>
+        `;
+      });
+      root.innerHTML = html;
+      document.querySelectorAll("[data-map]").forEach(sel => {
+        sel.addEventListener("change", () => {
+          const key = sel.dataset.map;
+          const type = sel.dataset.type;
+          state.mappings[key] = state.mappings[key] || {};
+          state.mappings[key][type] = sel.value;
+          saveState();
+        });
+      });
+    }
+
+    document.querySelectorAll("[data-check]").forEach(box => {
+      const key = box.dataset.check;
+      box.checked = !!state.checks[key];
+      box.addEventListener("change", () => {
+        state.checks[key] = box.checked;
+        if(key.startsWith("expectation_")) renderMappings();
+        saveState();
+      });
+    });
+
+    document.querySelectorAll(".choice-card, .expectation-card").forEach(card => {
+      const input = card.querySelector("input");
+      if(input && input.checked) card.classList.add("active");
+      card.addEventListener("change", () => {
+        if(input && input.type === "checkbox"){
+          card.classList.toggle("active", input.checked);
+        }
+        if(input && input.type === "radio"){
+          document.querySelectorAll(`input[name="${input.name}"]`).forEach(i => {
+            const parent = i.closest(".choice-card");
+            if(parent) parent.classList.toggle("active", i.checked);
+          });
+          state.answers[input.name] = input.value;
+          saveState();
+        }
+      });
+      if(input && input.type === "checkbox"){
+        input.addEventListener("change", () => {
+          state.checks[input.dataset.check || input.dataset.expectation ? (input.dataset.check || `expectation_${input.dataset.expectation}`) : input.name] = input.checked;
+          saveState();
+        });
+      }
+    });
+
+    document.querySelectorAll("[data-expectation]").forEach(box => {
+      const key = `expectation_${box.dataset.expectation}`;
+      box.checked = !!state.checks[key];
+      box.closest(".expectation-card").classList.toggle("active", box.checked);
+      box.addEventListener("change", () => {
+        const count = checked("expectation_").length;
+        if(box.checked && count >= 5){
+          box.checked = false;
+          alert("Please keep this to 3–5 expectations for now.");
+          return;
+        }
+        state.checks[key] = box.checked;
+        box.closest(".expectation-card").classList.toggle("active", box.checked);
+        renderMappings();
+        saveState();
+      });
+    });
+
+    document.querySelectorAll("[data-note]").forEach(area => {
+      const key = area.dataset.note;
+      area.value = state.notes[key] || "";
+      area.addEventListener("input", () => {
+        state.notes[key] = area.value;
+        saveState();
+      });
+    });
+
+    document.querySelectorAll("[data-complete]").forEach(box => {
+      const key = box.dataset.complete;
+      box.checked = !!state.completed[key];
+      box.addEventListener("change", () => {
+        state.completed[key] = box.checked;
+        saveState();
+      });
+    });
+
+    document.querySelectorAll("input[type='radio']").forEach(radio => {
+      if(state.answers[radio.name] === radio.value) radio.checked = true;
+      radio.addEventListener("change", () => {
+        state.answers[radio.name] = radio.value;
+        saveState();
+      });
+    });
+
+    document.getElementById("realityBtn").addEventListener("click", () => {
+      const count = checked("reality_").length;
+      let html = "";
+      if(count === 0){
+        html = "<strong>You may still be treating this too conceptually.</strong><p>Select the statements that feel closest to your current reality, even if they are uncomfortable. This tool becomes useful only when it works on real inconsistency, not on ideal language.</p>";
+      } else if(count <= 2){
+        html = "<strong>You are already seeing some meaningful tension between intention and behavior.</strong><p>That often means the foundation is in place, but the leadership context is still not defined clearly enough to guide behavior consistently under pressure.</p>";
+      } else {
+        html = "<strong>You are likely operating with multiple forms of inconsistency at once.</strong><p>The good news is that this usually means the issue is not a lack of goodwill. It is a lack of explicit expectations and shared interpretation. That is exactly what this tool is designed to address.</p>";
+      }
+      const out = document.getElementById("realityOutput");
+      out.innerHTML = html;
+      out.classList.add("active");
+    });
+
+    document.getElementById("frictionBtn").addEventListener("click", () => {
+      const a = state.answers["a_behavior"];
+      const b = state.answers["b_behavior"];
+      let html = "";
+      if(!a || !b){
+        html = "<p>Please complete both situation responses first.</p>";
+      } else {
+        const patterns = [];
+        if(a === "speed") patterns.push("a tendency to move quickly toward closure when uncertainty increases");
+        if(a === "safe") patterns.push("a tendency to protect constructive tone at the expense of full honesty");
+        if(a === "learn") patterns.push("some willingness to stay with difference before deciding");
+        if(b === "moveon") patterns.push("a habit of moving past mistakes before enough learning has taken place");
+        if(b === "partial") patterns.push("reflection that is useful but still somewhat cautious");
+        if(b === "examine") patterns.push("stronger willingness to examine patterns rather than just fix issues");
+
+        html += "<strong>Your situations suggest a leadership pattern rather than isolated incidents.</strong>";
+        html += `<p>You are showing ${patterns.join(", ")}.</p>`;
+        html += "<p>This matters because growth mindset in a leadership context is not defined by isolated good intentions. It is defined by repeated ways of operating across situations. The useful question now is where those patterns are helping and where they are slowing the team down or creating confusion.</p>";
+      }
+      const out = document.getElementById("frictionOutput");
+      out.innerHTML = html;
+      out.classList.add("active");
+    });
+
+    document.getElementById("expectationBtn").addEventListener("click", () => {
+      const selected = checked("expectation_").map(k => k.replace("expectation_",""));
+      let html = "";
+      if(selected.length < 3){
+        html = "<p>Please choose at least 3 expectations. The aim is to define a clear enough standard to guide behavior in real situations.</p>";
+      } else {
+        html += "<strong>You are beginning to define a growth mindset operating model.</strong>";
+        html += "<p>These expectations move the conversation away from abstract language and toward practical leadership standards. The next challenge is not choosing better words. It is making these expectations visible in your actual decisions, discussions, and collaboration.</p>";
+        html += `<p><strong>Selected expectations:</strong> ${selected.map(k => EXPECTATION_TEXT[k]).join(" | ")}</p>`;
+      }
+      const out = document.getElementById("expectationOutput");
+      out.innerHTML = html;
+      out.classList.add("active");
+      renderMappings();
+    });
+
+    document.getElementById("summaryBtn").addEventListener("click", () => {
+      const selected = checked("expectation_").map(k => k.replace("expectation_",""));
+      let html = "<h3>Your leadership summary</h3>";
+      if((state.notes.reality_note || "").trim()){
+        html += `<p><strong>What feels most true right now:</strong><br>${state.notes.reality_note.replace(/\n/g,"<br>")}</p>`;
+      }
+      if(selected.length){
+        html += "<p><strong>Growth mindset expectations I want to define more clearly:</strong></p><ul>";
+        selected.forEach(k => html += `<li>${EXPECTATION_TEXT[k]}</li>`);
+        html += "</ul>";
+      }
+      const mapped = Object.entries(state.mappings).filter(([,v]) => v.context || v.move);
+      if(mapped.length){
+        html += "<p><strong>Where this should show up first:</strong></p><ul>";
+        mapped.forEach(([k,v]) => {
+          html += `<li><strong>${EXPECTATION_TEXT[k]}</strong><br>Context: ${v.context || "Not selected"}<br>Move: ${v.move || "Not selected"}</li>`;
+        });
+        html += "</ul>";
+      }
+      ["next_meeting","resistance_note","owner_gap","owner_move","owner_team","owner_employees"].forEach(key => {
+        const labels = {
+          next_meeting:"What I will change in my next leadership meeting",
+          resistance_note:"What may make this harder",
+          owner_gap:"Main inconsistency to address",
+          owner_move:"First conversation or action",
+          owner_team:"How I want the leadership team to engage with this",
+          owner_employees:"How employees should eventually experience the difference"
+        };
+        if((state.notes[key] || "").trim()){
+          html += `<p><strong>${labels[key]}:</strong><br>${state.notes[key].replace(/\n/g,"<br>")}</p>`;
+        }
+      });
+      const out = document.getElementById("summaryOutput");
+      out.innerHTML = html;
+      out.classList.add("active");
+    });
+
+    document.getElementById("exportBtn").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "define-growth-mindset-context-notes.json";
+      a.click();
+    });
+
+    renderMappings();
+    updateStatus();
+  </script>
+</body>
+</html>
