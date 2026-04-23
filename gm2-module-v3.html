@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth Mindset 2.0 for Leadership Teams | Tool-Driven Module v3</title>
+  <link rel="stylesheet" href="gm2-module-v3.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="back-link">← Back to ChangeReadyLab</a>
+      <div class="eyebrow">Growth Mindset 2.0</div>
+      <h1>Growth Mindset 2.0 for Leadership Teams</h1>
+      <p class="lead">A tool-driven learning session for leadership teams. The purpose is not to explain growth mindset again. The purpose is to help a team see how change readiness shows up in real situations, where the gaps are, and what needs to change in practice.</p>
+      <p class="sublead">This version is built more like a guided working session than a traditional course. The interaction is varied on purpose. Some parts challenge assumptions. Some create a clearer picture of current reality. Others help the team work with real situations and leave with specific next steps.</p>
+      <div class="hero-actions">
+        <a href="#part1" class="btn primary">Start the session</a>
+        <button id="exportBtn" class="btn secondary">Export notes</button>
+      </div>
+      <div class="status-row">
+        <div class="status-card"><span class="status-label">Sections completed</span><strong id="completedCount">0 / 6</strong></div>
+        <div class="status-card"><span class="status-label">Team actions captured</span><strong id="actionCount">0</strong></div>
+        <div class="status-card"><span class="status-label">Progress saved</span><strong>In your browser</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="toc card">
+      <h2>How this session works</h2>
+      <p>This is designed for a leadership team, not a top executive team only, but leadership teams across the organization. You can use it together in a room, in a virtual session, or as preparation for a facilitated discussion. The strongest use is to move through it together, pause often, and compare how different people see the same team reality.</p>
+      <div class="toc-links">
+        <a href="#part1" class="toc-link">1. Reset the perspective</a>
+        <a href="#part2" class="toc-link">2. Behavioral Gap Map</a>
+        <a href="#part3" class="toc-link">3. Expand the Comfort Zone</a>
+        <a href="#part4" class="toc-link">4. Leadership situations</a>
+        <a href="#part5" class="toc-link">5. Your team, your reality</a>
+        <a href="#part6" class="toc-link">6. Action plan and next steps</a>
+      </div>
+    </section>
+
+    <section id="part1" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Part 1</div>
+          <h2>Reset the perspective</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="part1"><span>Mark complete</span></label>
+      </div>
+
+      <div class="content-grid">
+        <article>
+          <h3>This is where many leadership teams get stuck</h3>
+          <p>Most leadership teams are already working with the right words. Growth mindset, feedback, learning, collaboration, psychological safety. In many organizations, those ideas have been around for years. They are part of leadership development, part of internal language, and often part of what teams say they want more of.</p>
+          <p>The issue is rarely awareness. It is implementation under pressure.</p>
+          <p>When priorities shift, when execution starts to slip, when cross functional tension rises, or when something goes wrong, the quality of interaction in the room changes. Conversations become narrower. Some people become more careful. Others push harder for speed or certainty. Teams that describe themselves as open and learning oriented can become much less so in the moments where learning would matter most.</p>
+          <p>That is why Growth Mindset 2.0 is not really about whether leaders like the concept of growth mindset. It is about whether a leadership team can operate in a learning oriented way when the context makes that harder.</p>
+          <div class="principle-box">
+            <strong>Working principle</strong>
+            <p>This is less about what your team says it values and more about what your team is able to do together when the work becomes demanding.</p>
+          </div>
+        </article>
+
+        <article>
+          <h3>Quick positioning</h3>
+          <p class="small-muted">Which statement is closest to your current reality?</p>
+          <div class="option-group" data-question="intro_q">
+            <label class="option-card"><input type="radio" name="intro_q" value="a"> <span><strong>A.</strong> We understand these themes well, but our behavior still shifts more than we would like when pressure increases.</span></label>
+            <label class="option-card"><input type="radio" name="intro_q" value="b"> <span><strong>B.</strong> We apply some of this well, but it depends too much on the situation and the people involved.</span></label>
+            <label class="option-card"><input type="radio" name="intro_q" value="c"> <span><strong>C.</strong> We are relatively consistent, but we still see patterns that hold us back in more demanding situations.</span></label>
+          </div>
+          <button class="btn secondary feedback-btn" data-question="intro_q" data-target="intro_feedback">Generate feedback</button>
+          <div class="feedback-box" id="intro_feedback"></div>
+
+          <h3>Team reflection</h3>
+          <ul class="prompt-list">
+            <li>Where do we see the biggest gap between what we believe in and how we actually operate?</li>
+            <li>When the stakes rise, what tends to happen to the quality of our conversations?</li>
+            <li>What topics become harder to address directly when the team is under strain?</li>
+          </ul>
+
+          <h3>Action note</h3>
+          <textarea data-note="part1_action" rows="5" placeholder="What is one assumption or pattern we want to challenge as a team?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="part2" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Part 2</div>
+          <h2>Behavioral Gap Map</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="part2"><span>Mark complete</span></label>
+      </div>
+
+      <p>This is the deeper engine in the session. Use it individually first, then compare as a team. The aim is to make current reality, ambition, and differences in perception more visible.</p>
+
+      <div class="indicator-table" id="indicatorTable"></div>
+
+      <div class="hero-actions">
+        <button class="btn primary" id="analyzeGapBtn">Analyze our Gap Map</button>
+      </div>
+
+      <div id="gapSummary" class="feedback-box"></div>
+
+      <div class="content-grid compact-top">
+        <article>
+          <h3>What to look for</h3>
+          <ul class="prompt-list">
+            <li>Where is the gap between current and desired state largest?</li>
+            <li>Where is the current score lower than you expected?</li>
+            <li>Which areas matter most for how your team handles change and pressure?</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Team action</h3>
+          <textarea data-note="part2_action" rows="5" placeholder="What are the two or three most important insights from this Gap Map?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="part3" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Part 3</div>
+          <h2>Expand the Comfort Zone</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="part3"><span>Mark complete</span></label>
+      </div>
+
+      <div class="content-grid">
+        <article>
+          <h3>Navigate the mindset zones</h3>
+          <p>Growth mindset becomes much more practical when you stop treating it as a fixed quality and start treating it as a response to a situation. Leaders and teams move between openness, caution, defensiveness, learning, and action depending on what is happening around them.</p>
+          <p>The mindset zones help make that visible. The comfort zone is where performance is familiar and relatively stable. The fear zone is where uncertainty increases and reactions such as hesitation, defensiveness, control, or silence begin to show up. The learning zone is where curiosity, challenge, and adjustment become possible. The growth zone is where new capability starts to stick.</p>
+          <p>The point is not to label people. It is to help a leadership team recognize where it is in a real situation and what would help it move forward.</p>
+          <div class="zone-grid">
+            <div class="zone-card"><strong>Comfort</strong><span>Known patterns. Stable performance. Low stretch.</span></div>
+            <div class="zone-card"><strong>Fear</strong><span>Hesitation, defensiveness, control, silence, narrowed thinking.</span></div>
+            <div class="zone-card"><strong>Learning</strong><span>Questions, openness, challenge, experimentation, adjustment.</span></div>
+            <div class="zone-card"><strong>Growth</strong><span>New capability becoming repeatable and integrated.</span></div>
+          </div>
+        </article>
+
+        <article>
+          <h3>Zone reflection</h3>
+          <p class="small-muted">Think of a recent leadership situation involving uncertainty, pressure, or cross-functional tension. Where was your team mostly operating?</p>
+          <div class="option-group" data-question="zone_q">
+            <label class="option-card"><input type="radio" name="zone_q" value="comfort"> <span><strong>Comfort.</strong> We stayed with known patterns and did not really stretch ourselves.</span></label>
+            <label class="option-card"><input type="radio" name="zone_q" value="fear"> <span><strong>Fear.</strong> We became more cautious, defensive, controlling, or quiet than usual.</span></label>
+            <label class="option-card"><input type="radio" name="zone_q" value="learning"> <span><strong>Learning.</strong> We stayed open long enough to explore and adjust.</span></label>
+            <label class="option-card"><input type="radio" name="zone_q" value="growth"> <span><strong>Growth.</strong> We turned learning into a new way of operating.</span></label>
+          </div>
+          <button class="btn secondary feedback-btn" data-question="zone_q" data-target="zone_feedback">Generate feedback</button>
+          <div class="feedback-box" id="zone_feedback"></div>
+
+          <h3>Action</h3>
+          <p class="small-muted">Identify one signal that tells you the team is moving into fear and one behavior that could help the team stay in learning for longer.</p>
+          <textarea data-note="part3_action" rows="6" placeholder="Signal we should notice... / Behavior we should introduce..."></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="part4" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Part 4</div>
+          <h2>Leadership situations</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="part4"><span>Mark complete</span></label>
+      </div>
+
+      <p>The point here is not to find the perfect answer. It is to see what your team tends to do in situations where change readiness is tested.</p>
+
+      <div class="situation-card">
+        <h3>Situation 1 — Pressure and disagreement</h3>
+        <p>Your leadership team is responsible for a cross-functional initiative that is falling behind. One leader sees the issue as execution. Another sees it as unclear direction. A third believes the organization is overloaded. The meeting moves on, but not all perspectives are explored equally, and the pressure to decide is growing.</p>
+        <div class="option-group" data-question="sit1_q">
+          <label class="option-card"><input type="radio" name="sit1_q" value="a"> <span><strong>A.</strong> Move toward a decision quickly to maintain momentum.</span></label>
+          <label class="option-card"><input type="radio" name="sit1_q" value="b"> <span><strong>B.</strong> Keep the conversation constructive, but avoid pushing too hard on the tensions.</span></label>
+          <label class="option-card"><input type="radio" name="sit1_q" value="c"> <span><strong>C.</strong> Slow down enough to understand the different views before deciding.</span></label>
+        </div>
+        <button class="btn secondary feedback-btn" data-question="sit1_q" data-target="sit1_feedback">Generate feedback</button>
+        <div class="feedback-box" id="sit1_feedback"></div>
+      </div>
+
+      <div class="situation-card">
+        <h3>Situation 2 — A mistake reflects back on leadership</h3>
+        <p>A decision made by the leadership team leads to visible problems for part of the organization. The issue is manageable, but uncomfortable. A few people feel the warning signs were visible earlier. In the next meeting, the team can either move quickly to solutions or slow down to understand how the issue emerged.</p>
+        <div class="option-group" data-question="sit2_q">
+          <label class="option-card"><input type="radio" name="sit2_q" value="a"> <span><strong>A.</strong> Focus on fixing the issue and moving on.</span></label>
+          <label class="option-card"><input type="radio" name="sit2_q" value="b"> <span><strong>B.</strong> Discuss what happened, but keep the conversation relatively safe.</span></label>
+          <label class="option-card"><input type="radio" name="sit2_q" value="c"> <span><strong>C.</strong> Examine the decision process and what it says about the team’s patterns.</span></label>
+        </div>
+        <button class="btn secondary feedback-btn" data-question="sit2_q" data-target="sit2_feedback">Generate feedback</button>
+        <div class="feedback-box" id="sit2_feedback"></div>
+      </div>
+
+      <div class="content-grid compact-top">
+        <article>
+          <h3>What do you notice?</h3>
+          <ul class="prompt-list">
+            <li>Do your answers optimize more for speed, harmony, or learning?</li>
+            <li>Which of these situations feels most familiar right now?</li>
+            <li>What do your choices suggest about your team’s current change readiness?</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Action</h3>
+          <textarea data-note="part4_action" rows="5" placeholder="What did these situations reveal about your team, and what should change?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="part5" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Part 5</div>
+          <h2>Your team, your reality</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="part5"><span>Mark complete</span></label>
+      </div>
+
+      <div class="content-grid">
+        <article>
+          <h3>Choose one real situation</h3>
+          <p>Now move away from the examples above and bring in one real situation your leadership team is dealing with. It could be a priority shift, a change initiative, a cross-functional challenge, a difficult stakeholder situation, or a missed expectation that created pressure inside the team.</p>
+          <div class="option-group" data-question="real_q">
+            <label class="option-card"><input type="radio" name="real_q" value="change"> <span><strong>Change initiative.</strong> Priorities shifted or a transformation effort created uncertainty.</span></label>
+            <label class="option-card"><input type="radio" name="real_q" value="cross"> <span><strong>Cross-functional tension.</strong> Different functions or perspectives pulled the team in different directions.</span></label>
+            <label class="option-card"><input type="radio" name="real_q" value="setback"> <span><strong>Setback or missed expectation.</strong> Something did not go as planned and leadership had to respond.</span></label>
+            <label class="option-card"><input type="radio" name="real_q" value="people"> <span><strong>People or team issue.</strong> The challenge centered on leadership, team dynamics, or communication.</span></label>
+          </div>
+          <h3>Describe it briefly</h3>
+          <textarea data-note="part5_situation" rows="6" placeholder="What happened? What made this situation demanding for the leadership team?"></textarea>
+        </article>
+
+        <article>
+          <h3>Mini situation map</h3>
+          <p class="small-muted">Rate this specific situation, not the team in general.</p>
+          <div class="mini-map">
+            <label>How openly did we discuss what was really going on?
+              <input type="range" min="1" max="5" value="3" data-range="m1">
+            </label>
+            <label>How well did we stay with uncertainty before rushing to answers?
+              <input type="range" min="1" max="5" value="3" data-range="m2">
+            </label>
+            <label>How clearly did we turn the discussion into practical direction?
+              <input type="range" min="1" max="5" value="3" data-range="m3">
+            </label>
+          </div>
+          <button class="btn secondary" id="miniMapBtn">Generate situation insight</button>
+          <div class="feedback-box" id="miniMapFeedback"></div>
+
+          <h3>Action</h3>
+          <textarea data-note="part5_action" rows="5" placeholder="What will we do differently next time a similar situation happens?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="part6" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Part 6</div>
+          <h2>Action plan and next steps</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="part6"><span>Mark complete</span></label>
+      </div>
+
+      <p>The goal now is to leave with a small set of practical commitments that the team can actually use. Keep this simple and concrete. The question is not what would be ideal. The question is what you are prepared to do.</p>
+
+      <div class="content-grid">
+        <article>
+          <h3>Choose your priority areas</h3>
+          <div class="option-group" data-question="priority_q">
+            <label class="option-card"><input type="checkbox" data-priority="disagreement"> <span>Strengthen how we handle disagreement</span></label>
+            <label class="option-card"><input type="checkbox" data-priority="mistakes"> <span>Improve how we work with mistakes and feedback</span></label>
+            <label class="option-card"><input type="checkbox" data-priority="crossfunctional"> <span>Improve cross-functional collaboration</span></label>
+            <label class="option-card"><input type="checkbox" data-priority="uncertainty"> <span>Work better with uncertainty and pressure</span></label>
+            <label class="option-card"><input type="checkbox" data-priority="trickledown"> <span>Make our learning more visible to the teams we lead</span></label>
+          </div>
+          <h3>Three priorities for the next 30 days</h3>
+          <textarea data-note="priority_1" rows="4" placeholder="Priority 1"></textarea>
+          <textarea data-note="priority_2" rows="4" placeholder="Priority 2"></textarea>
+          <textarea data-note="priority_3" rows="4" placeholder="Priority 3"></textarea>
+        </article>
+
+        <article>
+          <h3>Make it specific</h3>
+          <textarea data-note="habit_note" rows="5" placeholder="One team habit we will introduce or strengthen"></textarea>
+          <textarea data-note="apply_note" rows="5" placeholder="One real situation where we will apply this in the near future"></textarea>
+          <textarea data-note="trickle_note" rows="5" placeholder="How the teams we lead should notice that something is changing"></textarea>
+          <textarea data-note="ownership_note" rows="4" placeholder="Who will keep this alive inside the team?"></textarea>
+        </article>
+      </div>
+
+      <div class="hero-actions">
+        <button id="summaryBtn" class="btn primary">Create summary</button>
+      </div>
+      <div id="summaryOutput" class="feedback-box"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Created as a tool-driven prototype for ChangeReadyLab.</p>
+      <p class="small-muted">This version saves progress in the browser only. It can later be extended with shared team input, a fuller team alignment view, facilitator guidance, and central data capture.</p>
+    </div>
+  </footer>
+
+  <script src="gm2-module-v3.js"></script>
+</body>
+</html>
