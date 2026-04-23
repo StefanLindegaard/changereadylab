@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expand the Comfort Zone | ChangeReadyLab</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --text:#1f2a3d;
+      --muted:#5e6b7a;
+      --line:#d9e1ec;
+      --brand:#335eea;
+      --brand-dark:#2749b8;
+      --brand-soft:#eef3ff;
+      --accent:#eaf0ff;
+      --shadow:0 14px 36px rgba(31,42,61,.08);
+      --radius:18px;
+      --ok:#e9f7ef;
+      --warn:#fff7e8;
+      --risk:#fff0f0;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#f7f9fc 0%, #f3f5fa 100%);
+      line-height:1.7;
+    }
+    .wrap{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+    }
+    .site-header{
+      padding:28px 0 30px;
+    }
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      color:var(--text);
+      text-decoration:none;
+      margin-bottom:18px;
+      font-weight:700;
+    }
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      padding:7px 12px;
+      border:1px solid #d8e4ff;
+      border-radius:999px;
+      background:var(--brand-soft);
+      color:var(--brand-dark);
+      font-size:13px;
+      font-weight:700;
+    }
+    h1,h2,h3,h4{
+      line-height:1.15;
+      margin:0 0 16px;
+      letter-spacing:-0.03em;
+    }
+    h1{font-size:clamp(36px,5.5vw,58px); max-width:920px;}
+    h2{font-size:clamp(28px,3.2vw,38px);}
+    h3{font-size:24px;}
+    h4{font-size:19px;}
+    p{margin:0 0 16px;}
+    .lead{
+      font-size:clamp(18px,2.2vw,24px);
+      max-width:920px;
+    }
+    .sublead,.small-muted{color:var(--muted);}
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+    .btn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 18px;
+      border-radius:12px;
+      font-size:15px;
+      font-weight:700;
+    }
+    .btn.primary{background:var(--brand); color:#fff;}
+    .btn.primary:hover{background:var(--brand-dark);}
+    .btn.secondary{background:#fff; color:var(--text); border:1px solid var(--line);}
+    .status-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:26px;
+    }
+    .status-card,.card,.section-card,.score-card,.zone-card{
+      background:var(--card);
+      border:1px solid rgba(31,42,61,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .status-card{padding:18px;}
+    .status-label{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .card,.section-card{
+      padding:28px;
+      margin-bottom:26px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:26px;
+    }
+    .principle-box{
+      margin-top:18px;
+      padding:16px 18px;
+      border-radius:14px;
+      background:var(--brand-soft);
+      border:1px solid #d8e4ff;
+    }
+    textarea{
+      width:100%;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      font:inherit;
+      resize:vertical;
+      min-height:110px;
+      background:#fff;
+      margin-top:10px;
+    }
+    textarea:focus, input:focus, select:focus{
+      outline:2px solid rgba(51,94,234,.18);
+      outline-offset:2px;
+    }
+    .scenario-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    .scenario-card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px;
+      background:#fff;
+      cursor:pointer;
+    }
+    .scenario-card.active{
+      border:2px solid var(--brand);
+      background:#f8fbff;
+    }
+    .behavior-table{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+    .behavior-row{
+      display:grid;
+      grid-template-columns:2.1fr 1fr 1fr;
+      gap:12px;
+      align-items:center;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+    }
+    .behavior-row.header{
+      font-weight:700;
+      background:#f8fbff;
+    }
+    .behavior-label small{
+      display:block;
+      color:var(--muted);
+      margin-top:4px;
+    }
+    .select-wrap select{
+      width:100%;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      font:inherit;
+    }
+    .feedback-box{
+      display:none;
+      margin-top:16px;
+      padding:18px;
+      border-radius:14px;
+      background:#f8fbff;
+      border:1px solid #d8e4ff;
+    }
+    .feedback-box.active{display:block;}
+    .zone-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .zone-card{
+      padding:18px;
+    }
+    .zone-card.active{
+      border:2px solid var(--brand);
+      background:#f8fbff;
+    }
+    .zone-card span{
+      display:block;
+      color:var(--muted);
+      margin-top:8px;
+    }
+    .checklist-group{
+      display:grid;
+      gap:12px;
+      margin:14px 0 18px;
+    }
+    .check-card{
+      display:block;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      cursor:pointer;
+    }
+    .check-card input{margin-right:10px;}
+    .priority-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:12px;
+    }
+    .priority-box{
+      padding:16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      margin-right:8px;
+      margin-bottom:8px;
+      border:1px solid var(--line);
+      background:#f7f9fc;
+      color:var(--muted);
+    }
+    .site-footer{
+      padding:12px 0 34px;
+    }
+    .footer-inner{
+      color:var(--muted);
+      font-size:14px;
+    }
+    @media (max-width: 960px){
+      .status-row,.grid-2,.scenario-grid,.zone-grid,.priority-grid,.behavior-row{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="back-link">← Back to ChangeReadyLab</a>
+      <div class="eyebrow">Standalone tool</div>
+      <h1>Expand the Comfort Zone</h1>
+      <p class="lead">This is an individual diagnostic and action tool, not a short reflection page. The purpose is to help you identify where you are currently staying too safe, where fear is shaping your leadership behavior, and what specific move would help you expand your comfort zone in practice.</p>
+      <p class="sublead">The logic is similar to Gap Map. You work with a real situation, score current and desired behavior across meaningful leadership dimensions, get a pattern output, and leave with one deliberate expansion move.</p>
+      <div class="hero-actions">
+        <a href="#section1" class="btn primary">Start the tool</a>
+        <button id="exportBtn" class="btn secondary">Export notes</button>
+      </div>
+      <div class="status-row">
+        <div class="status-card"><span class="status-label">Sections completed</span><strong id="completedCount">0 / 5</strong></div>
+        <div class="status-card"><span class="status-label">Gap engine completed</span><strong id="engineCount">0 / 2</strong></div>
+        <div class="status-card"><span class="status-label">Progress saved</span><strong>In your browser</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="section1" class="section-card">
+      <h2>1. Anchor this in a real situation</h2>
+      <div class="grid-2">
+        <article>
+          <p>The comfort zone is not a problem in itself. It gives you speed, confidence, and efficiency in areas where you already know how to perform. The challenge begins when a changing situation requires a different kind of response and you still lead from patterns that feel familiar rather than from what the situation now demands.</p>
+          <p>To make this practical, start with one real leadership situation. It should be something current or recent where you felt some form of tension, hesitation, over-control, discomfort, uncertainty, or avoidance.</p>
+          <div class="principle-box">
+            <strong>Working principle</strong>
+            <p>This is not about whether you are generally brave, open, or growth minded. It is about how you actually respond in a situation that asks more of you than your current comfort zone easily gives.</p>
+          </div>
+        </article>
+        <article>
+          <h3>Select the closest type of situation</h3>
+          <div class="scenario-grid" id="scenarioGrid">
+            <div class="scenario-card" data-scenario="pressure">
+              <strong>Pressure and overload</strong>
+              <p class="small-muted">Too much happening at once. Tight timing. Rising expectations.</p>
+            </div>
+            <div class="scenario-card" data-scenario="conflict">
+              <strong>Disagreement or tension</strong>
+              <p class="small-muted">Different views. Difficult feedback. Uneven alignment.</p>
+            </div>
+            <div class="scenario-card" data-scenario="change">
+              <strong>Change or uncertainty</strong>
+              <p class="small-muted">Shifting priorities. Ambiguity. New expectations.</p>
+            </div>
+          </div>
+          <h3>Describe the real situation briefly</h3>
+          <textarea data-note="situation_note" placeholder="What is happening, and what makes this situation demanding for you as a leader?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="section2" class="section-card">
+      <h2>2. Behavioral Gap Map</h2>
+      <p>This is the deeper engine in the tool. Score your current behavior and your desired behavior in this specific situation. Do not answer based on your general self-image. Answer based on what you are actually doing right now.</p>
+      <div class="behavior-table" id="behaviorTable"></div>
+      <div class="hero-actions">
+        <button class="btn primary" id="analyzeGapBtn">Analyze my pattern</button>
+      </div>
+      <div id="gapOutput" class="feedback-box"></div>
+    </section>
+
+    <section id="section3" class="section-card">
+      <h2>3. Where are you actually operating?</h2>
+      <div class="grid-2">
+        <article>
+          <p>The mindset zones become useful only when they are connected to real behavior. Most leaders do not consciously say, “I am in fear.” What shows up instead is hesitation, over-control, fast closure, protecting reputation, silence, or a narrowed conversation.</p>
+          <p>Based on your scores above, this tool will suggest your likely dominant zone. You should still challenge that suggestion. Ask yourself whether it fits the reality of how you are operating in this situation.</p>
+          <div class="zone-grid" id="zoneGrid">
+            <div class="zone-card" data-zone="comfort"><strong>Comfort</strong><span>Known patterns, efficiency, low stretch.</span></div>
+            <div class="zone-card" data-zone="fear"><strong>Fear</strong><span>Defensiveness, caution, control, silence, quick closure.</span></div>
+            <div class="zone-card" data-zone="learning"><strong>Learning</strong><span>Questions, openness, challenge, experimentation, adjustment.</span></div>
+            <div class="zone-card" data-zone="growth"><strong>Growth</strong><span>New behavior becoming stronger and more natural.</span></div>
+          </div>
+        </article>
+        <article>
+          <h3>Underlying drivers</h3>
+          <p class="small-muted">What is most likely shaping your current behavior here?</p>
+          <div class="checklist-group">
+            <label class="check-card"><input type="checkbox" data-check="driver_control" /> <span>Need for control or certainty</span></label>
+            <label class="check-card"><input type="checkbox" data-check="driver_reputation" /> <span>Protecting reputation or avoiding being wrong</span></label>
+            <label class="check-card"><input type="checkbox" data-check="driver_relationship" /> <span>Protecting relationships or avoiding tension</span></label>
+            <label class="check-card"><input type="checkbox" data-check="driver_time" /> <span>Time pressure and overload</span></label>
+            <label class="check-card"><input type="checkbox" data-check="driver_clarity" /> <span>Lack of clarity about the right move</span></label>
+          </div>
+          <button class="btn secondary" id="zoneBtn">Generate zone insight</button>
+          <div id="zoneOutput" class="feedback-box"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="section4" class="section-card">
+      <h2>4. Cost of staying here</h2>
+      <div class="grid-2">
+        <article>
+          <p>One reason leaders stay in comfort or fear longer than they should is that the immediate benefits are real. You keep momentum. You avoid friction. You protect confidence. You stay with what feels manageable. The cost often shows up later.</p>
+          <p>Choose the consequences that are most likely if you continue leading this situation the same way.</p>
+          <div class="checklist-group">
+            <label class="check-card"><input type="checkbox" data-check="cost_alignment" /> <span>Misalignment will stay under the surface and slow execution later</span></label>
+            <label class="check-card"><input type="checkbox" data-check="cost_learning" /> <span>I will miss learning that could help me and others grow</span></label>
+            <label class="check-card"><input type="checkbox" data-check="cost_repetition" /> <span>I am likely to repeat the same pattern in future situations</span></label>
+            <label class="check-card"><input type="checkbox" data-check="cost_trust" /> <span>Trust or openness may weaken because important things stay unsaid</span></label>
+            <label class="check-card"><input type="checkbox" data-check="cost_change" /> <span>I may keep performing, but not truly adapt to what the situation now requires</span></label>
+          </div>
+        </article>
+        <article>
+          <h3>Short interpretation</h3>
+          <div class="priority-grid" id="costInterpretationBoxes">
+            <div class="priority-box"><span class="pill">Why this matters</span><p>The cost of staying in the same pattern is often delayed. That is why it is easy to underestimate.</p></div>
+            <div class="priority-box"><span class="pill">Leadership lens</span><p>The question is not just what you can get away with today. It is what kind of leadership pattern you are strengthening over time.</p></div>
+            <div class="priority-box"><span class="pill">Bridge to teams</span><p>The way you handle discomfort often becomes a signal for what your own team learns to do or avoid.</p></div>
+          </div>
+          <textarea data-note="cost_note" placeholder="What is the most important cost for you to take seriously here?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="section5" class="section-card">
+      <h2>5. Expand your comfort zone deliberately</h2>
+      <div class="grid-2">
+        <article>
+          <p>The point is not to make a dramatic leap. The strongest moves are often smaller and more realistic. A good expansion move increases challenge enough to create learning, but not so much that you fall back into avoidance or overreaction.</p>
+          <h3>Choose one direction for your expansion move</h3>
+          <div class="checklist-group">
+            <label class="check-card"><input type="radio" name="expansion_move" value="raise" /> <span>Raise a difficult issue more directly</span></label>
+            <label class="check-card"><input type="radio" name="expansion_move" value="ask" /> <span>Ask a question you usually avoid asking</span></label>
+            <label class="check-card"><input type="radio" name="expansion_move" value="slow" /> <span>Slow down a decision enough to understand more fully</span></label>
+            <label class="check-card"><input type="radio" name="expansion_move" value="share" /> <span>Share uncertainty more openly instead of hiding it</span></label>
+            <label class="check-card"><input type="radio" name="expansion_move" value="challenge" /> <span>Challenge an assumption constructively</span></label>
+          </div>
+        </article>
+        <article>
+          <h3>Make it specific</h3>
+          <textarea data-note="expansion_action" placeholder="What is the exact move you will make? Be specific about what you will say or do."></textarea>
+          <textarea data-note="expansion_timing" placeholder="When and where will you do this?"></textarea>
+          <textarea data-note="expansion_support" placeholder="What would help you follow through instead of staying with the old pattern?"></textarea>
+        </article>
+      </div>
+      <div class="hero-actions">
+        <button class="btn primary" id="summaryBtn">Create my expansion summary</button>
+      </div>
+      <div id="summaryOutput" class="feedback-box"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Created as a standalone diagnostic tool for ChangeReadyLab.</p>
+      <p>This version is individual first, but the logic is designed so it can later connect into a team bridge or a broader tool library.</p>
+    </div>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = "expand_comfort_zone_v2_state";
+    const BEHAVIORS = [
+      { key:"directness", label:"Addressing what matters directly", desc:"How openly you raise the issue instead of circling around it." },
+      { key:"uncertainty", label:"Staying with uncertainty", desc:"How well you resist rushing too quickly to certainty or closure." },
+      { key:"feedback", label:"Inviting challenge and feedback", desc:"How willing you are to hear something uncomfortable that may improve the situation." },
+      { key:"assumptions", label:"Challenging assumptions", desc:"How willing you are to test your own view or someone else's instead of protecting it." },
+      { key:"experimentation", label:"Trying a new response", desc:"How willing you are to act in a way that is less familiar but more appropriate." },
+      { key:"emotional", label:"Managing emotional discomfort", desc:"How well you stay constructive when the situation feels exposed, tense, or uncertain." }
+    ];
+
+    function defaultState(){
+      return {
+        completed: {section1:false,section2:false,section3:false,section4:false,section5:false},
+        notes: {},
+        checks: {},
+        answers: {},
+        behaviorScores: {}
+      };
+    }
+
+    function loadState(){
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultState(); }
+      catch(e){ return defaultState(); }
+    }
+
+    let state = loadState();
+
+    function saveState(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateStatus();
+    }
+
+    function updateStatus(){
+      const completed = Object.values(state.completed).filter(Boolean).length;
+      const engines = [Object.keys(state.behaviorScores).length > 0, !!document.getElementById("summaryOutput").innerHTML].filter(Boolean).length;
+      document.getElementById("completedCount").textContent = `${completed} / 5`;
+      document.getElementById("engineCount").textContent = `${engines} / 2`;
+    }
+
+    function renderBehaviorTable(){
+      const root = document.getElementById("behaviorTable");
+      let html = `
+        <div class="behavior-row header">
+          <div>Behavior</div>
+          <div>Current</div>
+          <div>Desired</div>
+        </div>
+      `;
+      BEHAVIORS.forEach(item => {
+        const current = state.behaviorScores[item.key]?.current || "3";
+        const desired = state.behaviorScores[item.key]?.desired || "5";
+        html += `
+          <div class="behavior-row">
+            <div class="behavior-label">
+              <strong>${item.label}</strong>
+              <small>${item.desc}</small>
+            </div>
+            <div class="select-wrap">
+              <select data-behavior="${item.key}" data-type="current">
+                ${[1,2,3,4,5].map(n => `<option value="${n}" ${String(current)===String(n)?"selected":""}>${n}</option>`).join("")}
+              </select>
+            </div>
+            <div class="select-wrap">
+              <select data-behavior="${item.key}" data-type="desired">
+                ${[1,2,3,4,5].map(n => `<option value="${n}" ${String(desired)===String(n)?"selected":""}>${n}</option>`).join("")}
+              </select>
+            </div>
+          </div>
+        `;
+      });
+      root.innerHTML = html;
+      document.querySelectorAll("[data-behavior]").forEach(sel => {
+        sel.addEventListener("change", () => {
+          const key = sel.dataset.behavior;
+          const type = sel.dataset.type;
+          state.behaviorScores[key] = state.behaviorScores[key] || {};
+          state.behaviorScores[key][type] = sel.value;
+          saveState();
+        });
+      });
+    }
+
+    function checked(prefix){
+      return Object.keys(state.checks).filter(k => k.startsWith(prefix) && state.checks[k]);
+    }
+
+    function calculateGapSummary(){
+      const data = BEHAVIORS.map(item => {
+        const current = Number(state.behaviorScores[item.key]?.current || 3);
+        const desired = Number(state.behaviorScores[item.key]?.desired || 5);
+        return {label:item.label, key:item.key, current, desired, gap: desired - current};
+      });
+      const avgCurrent = data.reduce((a,b)=>a+b.current,0)/data.length;
+      const avgDesired = data.reduce((a,b)=>a+b.desired,0)/data.length;
+      const avgGap = data.reduce((a,b)=>a+b.gap,0)/data.length;
+      const biggest = [...data].sort((a,b)=>b.gap-a.gap)[0];
+      return {data, avgCurrent, avgDesired, avgGap, biggest};
+    }
+
+    function inferZone(summary){
+      const current = summary.avgCurrent;
+      const gap = summary.avgGap;
+      if(current >= 4.1 && gap <= 0.8) return "growth";
+      if(current >= 3.4 && gap <= 1.3) return "learning";
+      if(current <= 3.0 && gap >= 1.4) return "fear";
+      return "comfort";
+    }
+
+    function gapInterpretation(summary){
+      const zone = inferZone(summary);
+      let html = "";
+      if(zone === "fear"){
+        html += "<strong>Your pattern suggests you are currently operating closer to fear than you may prefer to admit.</strong><p>This does not mean panic or visible insecurity. In leadership work, fear often looks more professional. It can look like control, avoidance, faster closure, softer challenge, or staying too close to what already feels manageable. The gap between your current behavior and your desired behavior suggests you already know this situation is asking more of you than you are currently giving it.</p>";
+      } else if(zone === "comfort"){
+        html += "<strong>Your pattern suggests you are still working mainly from comfort.</strong><p>You are probably functioning reasonably well, but not stretching much in the way this situation requires. The risk here is not failure in the obvious sense. It is staying with leadership patterns that feel efficient while avoiding the learning that would help you lead this situation more strongly.</p>";
+      } else if(zone === "learning"){
+        html += "<strong>Your pattern suggests you are already moving into learning.</strong><p>You are not fully stuck in comfort or fear, and your current behavior shows some willingness to stay open, challenge assumptions, and work constructively with discomfort. The important question now is what would help you stay here more deliberately instead of slipping back when the stakes rise.</p>";
+      } else {
+        html += "<strong>Your pattern suggests you are closer to growth.</strong><p>Your current behavior is already relatively close to what you say you want, which suggests this situation may be helping you build stronger leadership capability. The useful next step is to make sure this does not remain a one-off moment but starts to become repeatable.</p>";
+      }
+      html += `<p><strong>Biggest gap:</strong> ${summary.biggest.label} (${summary.biggest.current} → ${summary.biggest.desired}).</p>`;
+      html += `<p><strong>Working question:</strong> If you improved only this one dimension in the next two weeks, how much stronger would your leadership become in this exact situation?</p>`;
+      return {zone, html};
+    }
+
+    document.querySelectorAll("[data-complete]").forEach(box => {
+      const key = box.dataset.complete;
+      box.checked = !!state.completed[key];
+      box.addEventListener("change", () => {
+        state.completed[key] = box.checked;
+        saveState();
+      });
+    });
+
+    document.querySelectorAll("[data-note]").forEach(area => {
+      const key = area.dataset.note;
+      area.value = state.notes[key] || "";
+      area.addEventListener("input", () => {
+        state.notes[key] = area.value;
+        saveState();
+      });
+    });
+
+    document.querySelectorAll("[data-check]").forEach(box => {
+      const key = box.dataset.check;
+      box.checked = !!state.checks[key];
+      box.addEventListener("change", () => {
+        state.checks[key] = box.checked;
+        saveState();
+      });
+    });
+
+    document.querySelectorAll(".scenario-card").forEach(card => {
+      const val = card.dataset.scenario;
+      if(state.answers.scenario === val) card.classList.add("active");
+      card.addEventListener("click", () => {
+        document.querySelectorAll(".scenario-card").forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+        state.answers.scenario = val;
+        saveState();
+      });
+    });
+
+    document.querySelectorAll("input[name='expansion_move']").forEach(radio => {
+      if(state.answers.expansion_move === radio.value) radio.checked = true;
+      radio.addEventListener("change", () => {
+        state.answers.expansion_move = radio.value;
+        saveState();
+      });
+    });
+
+    document.getElementById("analyzeGapBtn").addEventListener("click", () => {
+      const summary = calculateGapSummary();
+      const result = gapInterpretation(summary);
+      const out = document.getElementById("gapOutput");
+      out.innerHTML = result.html;
+      out.classList.add("active");
+
+      document.querySelectorAll(".zone-card").forEach(c => c.classList.remove("active"));
+      const zoneCard = document.querySelector(`.zone-card[data-zone="${result.zone}"]`);
+      if(zoneCard) zoneCard.classList.add("active");
+      state.answers.inferred_zone = result.zone;
+      saveState();
+    });
+
+    document.getElementById("zoneBtn").addEventListener("click", () => {
+      const drivers = checked("driver_").map(v => v.replace("driver_",""));
+      let html = "";
+      const zone = state.answers.inferred_zone || "comfort";
+      const zoneLabel = {
+        comfort: "comfort",
+        fear: "fear",
+        learning: "learning",
+        growth: "growth"
+      }[zone];
+
+      html += `<strong>Your likely dominant zone in this situation is ${zoneLabel}.</strong>`;
+      if(zone === "fear"){
+        html += "<p>The important thing here is honesty. Many leaders describe themselves as learning oriented while actually operating from fear when the pressure rises. The professional version of fear rarely looks dramatic. It looks more like control, caution, protecting reputation, or reducing the space for challenge.</p>";
+      } else if(zone === "comfort"){
+        html += "<p>This suggests you may still be relying on familiar patterns that feel efficient and stable. The challenge is that the situation may now require more openness, challenge, or experimentation than those patterns naturally allow.</p>";
+      } else if(zone === "learning"){
+        html += "<p>This suggests you are already doing some of the right work. The key now is to understand what keeps you in learning and what might pull you back into comfort or fear if the pressure increases.</p>";
+      } else {
+        html += "<p>This suggests you are already integrating stronger behavior in this situation. The question is how to make that more deliberate and repeatable across future situations, not just this one.</p>";
+      }
+
+      if(drivers.length){
+        const pretty = drivers.map(x => ({
+          control:"need for control or certainty",
+          reputation:"protecting reputation or avoiding being wrong",
+          relationship:"protecting relationships or avoiding tension",
+          time:"time pressure and overload",
+          clarity:"lack of clarity about the right move"
+        }[x] || x));
+        html += `<p><strong>Likely drivers:</strong> ${pretty.join(", ")}.</p>`;
+      }
+
+      html += "<p>The next useful move is not to diagnose yourself forever. It is to choose one uncomfortable but realistic action that would help you stay in learning for longer the next time this situation appears.</p>";
+
+      const out = document.getElementById("zoneOutput");
+      out.innerHTML = html;
+      out.classList.add("active");
+    });
+
+    document.getElementById("summaryBtn").addEventListener("click", () => {
+      const summary = calculateGapSummary();
+      const result = gapInterpretation(summary);
+      const costs = checked("cost_").map(v => ({
+        cost_alignment:"hidden misalignment and slower execution later",
+        cost_learning:"reduced learning and growth",
+        cost_repetition:"repeating the same pattern again",
+        cost_trust:"weaker trust or openness",
+        cost_change:"failing to truly adapt to the situation"
+      }[v] || v));
+
+      const expansionMap = {
+        raise:"Raise a difficult issue more directly",
+        ask:"Ask a question you usually avoid asking",
+        slow:"Slow down a decision enough to understand more fully",
+        share:"Share uncertainty more openly instead of hiding it",
+        challenge:"Challenge an assumption constructively"
+      };
+
+      let html = "<h3>Your expansion summary</h3>";
+      if((state.notes.situation_note || "").trim()){
+        html += `<p><strong>Situation:</strong><br>${state.notes.situation_note.replace(/\n/g,"<br>")}</p>`;
+      }
+      html += `<p><strong>Likely current zone:</strong> ${result.zone}.</p>`;
+      html += `<p><strong>Biggest behavioral gap:</strong> ${summary.biggest.label}.</p>`;
+      if(costs.length){
+        html += `<p><strong>Main cost of staying here:</strong> ${costs.join(", ")}.</p>`;
+      }
+      if(state.answers.expansion_move){
+        html += `<p><strong>Expansion direction:</strong> ${expansionMap[state.answers.expansion_move]}.</p>`;
+      }
+      ["expansion_action","expansion_timing","expansion_support"].forEach(key => {
+        const labels = {
+          expansion_action:"Specific action",
+          expansion_timing:"When you will do it",
+          expansion_support:"What will help you follow through"
+        };
+        if((state.notes[key] || "").trim()){
+          html += `<p><strong>${labels[key]}:</strong><br>${state.notes[key].replace(/\n/g,"<br>")}</p>`;
+        }
+      });
+      const out = document.getElementById("summaryOutput");
+      out.innerHTML = html;
+      out.classList.add("active");
+      saveState();
+    });
+
+    document.getElementById("exportBtn").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "expand-comfort-zone-v2-notes.json";
+      a.click();
+    });
+
+    renderBehaviorTable();
+    updateStatus();
+  </script>
+</body>
+</html>
