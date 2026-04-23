@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth Mindset 2.0 for Leadership Teams | Module v4</title>
+  <link rel="stylesheet" href="gm2-module-v4.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="back-link">← Back to ChangeReadyLab</a>
+      <div class="eyebrow">Growth Mindset 2.0</div>
+      <h1>Growth Mindset 2.0 for Leadership Teams</h1>
+      <p class="lead">A tool-driven learning experience for individual leaders who want to understand their own patterns, assess the readiness of the teams they lead, and turn Growth Mindset 2.0 into something practical. This is built to feel more like a guided working session than a course.</p>
+      <p class="sublead">The logic is simple. First, challenge the current understanding. Then assess yourself and your team. After that, work with the mindset zones, leadership situations, and a structured action plan that can carry into real work.</p>
+      <div class="hero-actions">
+        <a href="#section1" class="btn primary">Start the module</a>
+        <button id="exportBtn" class="btn secondary">Export notes</button>
+      </div>
+      <div class="status-row">
+        <div class="status-card"><span class="status-label">Sections completed</span><strong id="completedCount">0 / 6</strong></div>
+        <div class="status-card"><span class="status-label">Assessments completed</span><strong id="assessmentCount">0 / 3</strong></div>
+        <div class="status-card"><span class="status-label">Progress saved</span><strong>In your browser</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card toc-card">
+      <h2>Module flow</h2>
+      <p>Each section works differently on purpose. Some ask you to choose between competing truths. Some are assessment driven. Some use visual explanation. Others put you into leadership situations or help you build a practical next step.</p>
+      <div class="toc-grid">
+        <a class="toc-item" href="#section1"><strong>1.</strong><span>Reframe Growth Mindset 2.0</span></a>
+        <a class="toc-item" href="#section2"><strong>2.</strong><span>What’s your mindset?</span></a>
+        <a class="toc-item" href="#section3"><strong>3.</strong><span>How ready is your team for change?</span></a>
+        <a class="toc-item" href="#section4"><strong>4.</strong><span>Expand the comfort zone</span></a>
+        <a class="toc-item" href="#section5"><strong>5.</strong><span>Leadership situations</span></a>
+        <a class="toc-item" href="#section6"><strong>6.</strong><span>Action plan and next steps</span></a>
+      </div>
+    </section>
+
+    <section id="section1" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Section 1</div>
+          <h2>Reframe Growth Mindset 2.0</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="section1" /><span>Mark complete</span></label>
+      </div>
+      <div class="two-col">
+        <article>
+          <p>Most leaders already know the language. Growth mindset, feedback, learning, psychological safety, collaboration. In many organizations, these themes have been around for years. They have shaped leadership programs, team sessions, and HR initiatives. That work matters and it created a strong foundation.</p>
+          <p>The issue is rarely awareness. The issue is what happens when the work becomes demanding. When priorities shift, timelines tighten, or outcomes are at risk, leadership behavior changes. Conversations become narrower. Some people become more careful. Others move more quickly to conclusions. Teams that describe themselves as open and learning oriented can become much less so in the moments where learning would matter most.</p>
+          <p>That is the shift behind Growth Mindset 2.0. The question is no longer whether you like the concept. The question is whether growth mindset is visible in how you lead and how your team operates when pressure, uncertainty, and cross functional tension are present.</p>
+          <div class="principle-box">
+            <strong>Working principle</strong>
+            <p>Growth Mindset 2.0 is less about belief and more about change readiness in practice. It becomes visible in behavior, decisions, routines, and how leaders and teams respond when the situation makes it harder to stay open.</p>
+          </div>
+        </article>
+        <article>
+          <h3>Choose the statements that feel uncomfortably true</h3>
+          <div class="checklist-group">
+            <label class="check-card"><input type="checkbox" data-check="reframe_1" /> <span>We believe in learning, but when the stakes rise we often prioritize speed over understanding.</span></label>
+            <label class="check-card"><input type="checkbox" data-check="reframe_2" /> <span>We talk about openness, but certain tensions remain harder to surface directly than we like to admit.</span></label>
+            <label class="check-card"><input type="checkbox" data-check="reframe_3" /> <span>We support feedback, but when feedback points back at our own leadership choices it becomes more difficult to use well.</span></label>
+            <label class="check-card"><input type="checkbox" data-check="reframe_4" /> <span>We think of growth mindset mainly as an individual topic, even though our real bottlenecks are team based.</span></label>
+          </div>
+          <div class="hero-actions">
+            <button class="btn secondary" id="reframeBtn">Generate reflection</button>
+          </div>
+          <div id="reframeOutput" class="feedback-box"></div>
+          <h3>Short note</h3>
+          <textarea data-note="reframe_note" rows="5" placeholder="What feels most important or uncomfortable here?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="section2" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Section 2</div>
+          <h2>What’s your mindset?</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="section2" /><span>Mark complete</span></label>
+      </div>
+      <div class="visual-block">
+        <img src="assets/whats-your-mindset.jpeg" alt="What's your mindset assessment illustration" />
+      </div>
+      <p>This is a more personal assessment. It is not about whether you are a fixed or growth mindset leader in a simplistic sense. It is about how you tend to respond across different situations. Rate each item from 1 to 6. Use the scale honestly. The more realistic your input, the more useful the interpretation will be.</p>
+      <div class="assessment-grid" id="mindsetAssessment"></div>
+      <div class="hero-actions">
+        <button class="btn primary" id="mindsetBtn">See my mindset pattern</button>
+      </div>
+      <div id="mindsetOutput" class="feedback-box"></div>
+      <textarea data-note="mindset_note" rows="5" placeholder="What did this reveal about how you tend to respond to challenge, criticism, mistakes, success of others, and obstacles?"></textarea>
+    </section>
+
+    <section id="section3" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Section 3</div>
+          <h2>How ready is your team for change?</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="section3" /><span>Mark complete</span></label>
+      </div>
+      <div class="visual-block">
+        <img src="assets/team-ready-change.jpeg" alt="How ready is your team for change assessment illustration" />
+      </div>
+      <p>This assessment is about the team you lead, not leadership teams in general. Again, rate each item from 1 to 6. Think about how your team actually senses, accepts, and works with change right now. This is where your individual leadership perspective starts connecting to your real team context.</p>
+      <div class="assessment-grid" id="teamAssessment"></div>
+      <div class="hero-actions">
+        <button class="btn primary" id="teamBtn">See my team readiness pattern</button>
+      </div>
+      <div id="teamOutput" class="feedback-box"></div>
+      <textarea data-note="team_note" rows="5" placeholder="What stands out most in your team’s readiness profile?"></textarea>
+    </section>
+
+    <section id="section4" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Section 4</div>
+          <h2>Expand the comfort zone</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="section4" /><span>Mark complete</span></label>
+      </div>
+
+      <div class="carousel">
+        <div class="visual-block"><img src="assets/comfort-zone-intro.jpeg" alt="Comfort zone introduction illustration" /></div>
+        <div class="visual-block"><img src="assets/comfort-zone-pros.jpeg" alt="Pros of the comfort zone illustration" /></div>
+        <div class="visual-block"><img src="assets/comfort-zone-cons.jpeg" alt="Cons of the comfort zone illustration" /></div>
+        <div class="visual-block"><img src="assets/navigate-mindset-zones.jpeg" alt="Navigate your mindset zones illustration" /></div>
+        <div class="visual-block"><img src="assets/expand-comfort-zone.jpeg" alt="Let's expand the comfort zone illustration" /></div>
+      </div>
+
+      <div class="two-col">
+        <article>
+          <p>The comfort zone is not the enemy. It gives us speed, confidence, efficiency, predictable performance, and less friction. Those are real advantages. For leaders, that often means you know how to operate, how to react, and how to get routine work done without using too much energy.</p>
+          <p>The issue begins when the benefits of the comfort zone are mistaken for growth. A leader can be highly effective inside familiar patterns and still be avoiding the exact learning that a changing situation requires. Fear does not always show up dramatically. In professional leadership settings it often looks more subtle. More control. Less openness. A quicker move to certainty. Less willingness to stay with discomfort or challenge.</p>
+          <p>This is why the mindset zones matter. They help you work with what is happening instead of pretending you are always in learning or growth. The practical aim is not to force yourself or others to jump out of the comfort zone. It is to expand it over time, so that more demanding situations become more normal and manageable.</p>
+        </article>
+
+        <article>
+          <h3>Map one real situation</h3>
+          <p class="small-muted">Think of one leadership situation you are dealing with right now or have dealt with recently. Where were you mostly operating?</p>
+          <div class="option-group" data-question="zone_where">
+            <label class="option-card"><input type="radio" name="zone_where" value="comfort" /> <span><strong>Comfort.</strong> I stayed with what felt known, efficient, and in control.</span></label>
+            <label class="option-card"><input type="radio" name="zone_where" value="fear" /> <span><strong>Fear.</strong> I noticed more defensiveness, caution, over control, silence, or certainty seeking.</span></label>
+            <label class="option-card"><input type="radio" name="zone_where" value="learning" /> <span><strong>Learning.</strong> I stayed open long enough to explore, question, and adjust.</span></label>
+            <label class="option-card"><input type="radio" name="zone_where" value="growth" /> <span><strong>Growth.</strong> I was able to turn learning into a stronger and more repeatable way of leading.</span></label>
+          </div>
+
+          <h3>What does your comfort zone give you right now?</h3>
+          <div class="checklist-group">
+            <label class="check-card"><input type="checkbox" data-check="comfort_speed" /> <span>Speed and efficiency</span></label>
+            <label class="check-card"><input type="checkbox" data-check="comfort_confidence" /> <span>Confidence and control</span></label>
+            <label class="check-card"><input type="checkbox" data-check="comfort_lowstress" /> <span>Lower stress and lower friction</span></label>
+            <label class="check-card"><input type="checkbox" data-check="comfort_reliability" /> <span>Reliable performance for others</span></label>
+          </div>
+
+          <h3>What might staying there cost you?</h3>
+          <div class="checklist-group">
+            <label class="check-card"><input type="checkbox" data-check="cost_missed" /> <span>Missed opportunities</span></label>
+            <label class="check-card"><input type="checkbox" data-check="cost_growth" /> <span>Reduced growth and learning</span></label>
+            <label class="check-card"><input type="checkbox" data-check="cost_stuck" /> <span>Staying too close to the status quo</span></label>
+            <label class="check-card"><input type="checkbox" data-check="cost_lazy" /> <span>Over reliance on routines</span></label>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn secondary" id="zoneBtn">Generate zone insight</button>
+          </div>
+          <div id="zoneOutput" class="feedback-box"></div>
+          <textarea data-note="zone_note" rows="5" placeholder="What is one small move into learning you want to make in a real leadership situation?"></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="section5" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Section 5</div>
+          <h2>Leadership situations</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="section5" /><span>Mark complete</span></label>
+      </div>
+      <p>This section is closer to simulation. You are not looking for perfect answers. You are looking for patterns in how you would likely respond.</p>
+
+      <div class="situation-card">
+        <h3>Situation 1 — Pressure and disagreement</h3>
+        <p>A cross functional initiative is behind. You see three different explanations in the room and not enough time. One part of you wants to move quickly. Another part knows the team has not really surfaced the issue yet. What do you most likely do?</p>
+        <div class="option-group" data-question="sit1">
+          <label class="option-card"><input type="radio" name="sit1" value="a" /> <span>Move quickly toward a decision to keep momentum.</span></label>
+          <label class="option-card"><input type="radio" name="sit1" value="b" /> <span>Keep the conversation constructive, but avoid pushing too hard on the tensions.</span></label>
+          <label class="option-card"><input type="radio" name="sit1" value="c" /> <span>Slow down enough to understand the competing views before deciding.</span></label>
+        </div>
+        <button class="btn secondary feedback-btn" data-question="sit1" data-target="sit1Output">Generate feedback</button>
+        <div id="sit1Output" class="feedback-box"></div>
+      </div>
+
+      <div class="situation-card">
+        <h3>Situation 2 — A mistake reflects back on leadership</h3>
+        <p>A decision you supported creates visible problems for part of the organization. It is fixable, but uncomfortable. What is your most likely instinct?</p>
+        <div class="option-group" data-question="sit2">
+          <label class="option-card"><input type="radio" name="sit2" value="a" /> <span>Fix the issue quickly and move on.</span></label>
+          <label class="option-card"><input type="radio" name="sit2" value="b" /> <span>Discuss what happened, but keep it fairly safe.</span></label>
+          <label class="option-card"><input type="radio" name="sit2" value="c" /> <span>Examine the assumptions, signals, and leadership patterns that contributed.</span></label>
+        </div>
+        <button class="btn secondary feedback-btn" data-question="sit2" data-target="sit2Output">Generate feedback</button>
+        <div id="sit2Output" class="feedback-box"></div>
+      </div>
+
+      <div class="situation-card">
+        <h3>Situation 3 — Cross functional priorities compete</h3>
+        <p>You need different functions to work together, but each has valid pressures and different timelines. What do you most likely do?</p>
+        <div class="option-group" data-question="sit3">
+          <label class="option-card"><input type="radio" name="sit3" value="a" /> <span>Negotiate a workable compromise between the functions.</span></label>
+          <label class="option-card"><input type="radio" name="sit3" value="b" /> <span>Ask each side to explain their reality and try to create some common ground.</span></label>
+          <label class="option-card"><input type="radio" name="sit3" value="c" /> <span>Work toward a shared understanding of the wider problem before defining contributions.</span></label>
+        </div>
+        <button class="btn secondary feedback-btn" data-question="sit3" data-target="sit3Output">Generate feedback</button>
+        <div id="sit3Output" class="feedback-box"></div>
+      </div>
+
+      <textarea data-note="situations_note" rows="5" placeholder="What did these situations reveal about your default leadership patterns?"></textarea>
+    </section>
+
+    <section id="section6" class="module-card">
+      <div class="module-head">
+        <div>
+          <div class="eyebrow">Section 6</div>
+          <h2>Action plan and next steps</h2>
+        </div>
+        <label class="complete-toggle"><input type="checkbox" data-complete="section6" /><span>Mark complete</span></label>
+      </div>
+      <div class="two-col">
+        <article>
+          <h3>Choose your priority focus</h3>
+          <div class="checklist-group">
+            <label class="check-card"><input type="checkbox" data-check="priority_disagreement" /> <span>How I handle disagreement and challenge</span></label>
+            <label class="check-card"><input type="checkbox" data-check="priority_mistakes" /> <span>How I work with mistakes and learning</span></label>
+            <label class="check-card"><input type="checkbox" data-check="priority_uncertainty" /> <span>How I respond under pressure and uncertainty</span></label>
+            <label class="check-card"><input type="checkbox" data-check="priority_cross" /> <span>How I lead across functions and competing priorities</span></label>
+            <label class="check-card"><input type="checkbox" data-check="priority_team" /> <span>How I strengthen the readiness of the team I lead</span></label>
+          </div>
+
+          <h3>Build your next step</h3>
+          <textarea data-note="action_behavior" rows="4" placeholder="One leadership behavior I want to change or strengthen"></textarea>
+          <textarea data-note="action_habit" rows="4" placeholder="One simple habit or routine I want to introduce"></textarea>
+          <textarea data-note="action_test" rows="4" placeholder="One real situation where I will test this soon"></textarea>
+        </article>
+
+        <article>
+          <h3>Trickle-down and visibility</h3>
+          <textarea data-note="action_team" rows="5" placeholder="How should my team experience this change in my leadership?"></textarea>
+          <textarea data-note="action_progress" rows="5" placeholder="How will I know this is working? What would be more visible or different?"></textarea>
+          <textarea data-note="action_support" rows="5" placeholder="What support, accountability, or reminder would help me follow through?"></textarea>
+        </article>
+      </div>
+      <div class="hero-actions">
+        <button class="btn primary" id="summaryBtn">Create action summary</button>
+      </div>
+      <div id="summaryOutput" class="feedback-box"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>Created as a tool-driven prototype for ChangeReadyLab.</p>
+      <p class="small-muted">This version saves progress locally in the browser. It can later be expanded with shared team access, deeper analytics, facilitator views, and stronger data capture.</p>
+    </div>
+  </footer>
+
+  <script src="gm2-module-v4.js"></script>
+</body>
+</html>
