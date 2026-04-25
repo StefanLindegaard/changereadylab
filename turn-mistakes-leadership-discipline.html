@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turn Mistakes into a Leadership Discipline | ChangeReadyLab</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tool-progress {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:22px;
+    }
+    .progress-card {
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+    .progress-card span {
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:4px;
+    }
+    .situation-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .input-block {
+      margin-bottom:16px;
+    }
+    .input-block label {
+      display:block;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+    textarea, input, select {
+      width:100%;
+      padding:13px;
+      border:1px solid var(--line);
+      border-radius:13px;
+      font:inherit;
+      background:#fff;
+    }
+    textarea {
+      min-height:110px;
+      resize:vertical;
+    }
+    .choice-grid {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    .choice-card {
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:15px;
+      background:#fff;
+      cursor:pointer;
+    }
+    .choice-card.active {
+      border:2px solid var(--brand);
+      background:var(--brand-soft);
+    }
+    .rating-row {
+      display:grid;
+      grid-template-columns:1.4fr .8fr .8fr .8fr;
+      gap:10px;
+      align-items:center;
+      padding:14px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      margin-bottom:10px;
+    }
+    .rating-row.header {
+      font-weight:800;
+      background:var(--brand-soft);
+    }
+    .rating-row button {
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      cursor:pointer;
+      font-weight:800;
+    }
+    .rating-row button.active.red {background:#fff0f0; border-color:#e78b8b;}
+    .rating-row button.active.yellow {background:#fff7db; border-color:#e3c85f;}
+    .rating-row button.active.green {background:#eaf6ee; border-color:#7eb68f;}
+    .score-output {
+      display:none;
+      margin-top:18px;
+      padding:18px;
+      border-radius:16px;
+      border:1px solid #d7e6ff;
+      background:#f8fbff;
+    }
+    .score-output.active {display:block;}
+    .pdf-preview {
+      display:grid;
+      gap:18px;
+      margin-top:22px;
+    }
+    .pdf-card {
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:10px;
+      box-shadow:var(--shadow);
+    }
+    .pdf-card img {
+      width:100%;
+      display:block;
+      border-radius:12px;
+    }
+    @media(max-width:900px){
+      .tool-progress,.situation-grid,.choice-grid,.rating-row {
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">ChangeReadyLab<small>Growth Mindset 2.0 and Human + AI for leadership teams</small></a>
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="theory.html">Theory</a>
+      <a href="tools.html">Tools</a>
+      <a href="learning-programs.html">Programs</a>
+      <a href="train-the-trainer.html">Train-the-Trainer</a>
+      <a href="newsletter.html">Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="card hero-card">
+          <div class="kicker">Leadership Situation</div>
+          <h1>Turn Mistakes into a Leadership Discipline</h1>
+          <p class="lead">Growth mindset only creates value when leadership teams know how to work with mistakes and outcomes that do not go as planned. This tool helps you turn one real setback into a structured learning moment, without lowering standards or making accountability personal.</p>
+          <p class="muted">Use this individually first, then bring the summary into your leadership team. The aim is to create a repeatable way of learning from outcomes, decisions, assumptions, and behavior under pressure.</p>
+          <div class="inline-actions">
+            <a class="btn" href="#step1">Start the tool</a>
+            <a class="btn secondary" href="assets/turn-mistakes-leadership-discipline.pdf" download>Download PDF card</a>
+          </div>
+          <div class="tool-progress">
+            <div class="progress-card"><span>Tool type</span><strong>Leadership Situation</strong></div>
+            <div class="progress-card"><span>Focus</span><strong>Mistakes and setbacks</strong></div>
+            <div class="progress-card"><span>Use</span><strong>Individual → Team</strong></div>
+            <div class="progress-card"><span>Output</span><strong>Learning action plan</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="step1">
+      <div class="wrap">
+        <div class="card">
+          <h2>1. Start from a real situation</h2>
+          <p>Choose one recent situation where the outcome was not what you expected. It should matter enough that there is something to learn, but it does not need to be dramatic. The best examples are often ordinary leadership situations where the same pattern could easily happen again.</p>
+          <div class="situation-grid">
+            <div class="input-block">
+              <label>What was the situation?</label>
+              <textarea id="situation" placeholder="Describe the situation briefly."></textarea>
+            </div>
+            <div class="input-block">
+              <label>Why does this matter?</label>
+              <textarea id="whyMatter" placeholder="What made this situation important for you, the team, or the work?"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="card">
+          <h2>2. Make the situation visible</h2>
+          <p>Before learning can happen, the situation needs to be made visible without judgment. Many leadership teams skip this step and move too quickly into opinions, explanations, or fixes.</p>
+          <div class="situation-grid">
+            <div class="input-block">
+              <label>What was expected?</label>
+              <textarea id="expected" placeholder="What did you expect to happen? What was the intended outcome?"></textarea>
+            </div>
+            <div class="input-block">
+              <label>What actually happened?</label>
+              <textarea id="actual" placeholder="What happened in reality? Keep this as factual as possible."></textarea>
+            </div>
+            <div class="input-block">
+              <label>What was the impact?</label>
+              <textarea id="impact" placeholder="Who or what was affected? What changed as a result?"></textarea>
+            </div>
+            <div class="input-block">
+              <label>What did people focus on first?</label>
+              <select id="firstFocus">
+                <option value="">Select closest answer</option>
+                <option value="fix">Fixing the issue quickly</option>
+                <option value="explain">Explaining what happened</option>
+                <option value="defend">Defending decisions or positions</option>
+                <option value="learn">Understanding what led to the outcome</option>
+                <option value="silence">Avoiding or softening the issue</option>
+              </select>
+            </div>
+          </div>
+          <div class="inline-actions">
+            <button class="btn secondary" onclick="makeVisibleInsight()">Generate visibility insight</button>
+          </div>
+          <div id="visibleOutput" class="score-output"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="card">
+          <h2>3. Diagnose the leadership response</h2>
+          <p>When outcomes fall short, leadership teams often fall into one of a few patterns. None of these are unusual. The point is to identify the dominant response so the team can work with it more consciously next time.</p>
+          <div class="choice-grid" id="patternChoices">
+            <div class="choice-card" data-pattern="moveon">
+              <h3>Move on quickly</h3>
+              <p>Focus on restoring momentum and getting past the issue.</p>
+            </div>
+            <div class="choice-card" data-pattern="explain">
+              <h3>Explain and defend</h3>
+              <p>Spend energy clarifying why the situation happened and protecting decisions.</p>
+            </div>
+            <div class="choice-card" data-pattern="personal">
+              <h3>Personalize accountability</h3>
+              <p>Ownership becomes attached to individuals rather than decisions, assumptions, or system patterns.</p>
+            </div>
+            <div class="choice-card" data-pattern="learn">
+              <h3>Structured learning</h3>
+              <p>Use the situation to understand assumptions, decisions, behavior, and what needs to change.</p>
+            </div>
+          </div>
+          <div class="inline-actions">
+            <button class="btn secondary" onclick="patternInsight()">Generate pattern insight</button>
+          </div>
+          <div id="patternOutput" class="score-output"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="card">
+          <h2>4. Where did things go off track?</h2>
+          <p>Use the four focus areas below to identify what most influenced the outcome. This helps move the conversation away from blame and toward decisions, assumptions, and behaviors that can actually be changed.</p>
+          <div class="rating-row header">
+            <div>Focus area</div><div>Weak</div><div>Mixed</div><div>Strong</div>
+          </div>
+          <div id="ratings"></div>
+          <div class="inline-actions">
+            <button class="btn" onclick="ratingInsight()">Analyze focus areas</button>
+          </div>
+          <div id="ratingOutput" class="score-output"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="card">
+          <h2>5. What strong leadership teams do</h2>
+          <p>Mark each pattern as red, yellow, or green for your team. This is not a scorecard for perfection. It is a quick check to see where you need more consistency.</p>
+          <div class="rating-row header">
+            <div>Leadership pattern</div><div>Red</div><div>Yellow</div><div>Green</div>
+          </div>
+          <div id="teamCheck"></div>
+          <div class="inline-actions">
+            <button class="btn" onclick="teamCheckInsight()">Generate team check insight</button>
+          </div>
+          <div id="teamOutput" class="score-output"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="card">
+          <h2>6. Turn learning into changed behavior</h2>
+          <p>Learning only creates value when it changes how the team operates next time. Use this section to define a practical next step that you can bring into your leadership team or apply in the team you lead.</p>
+          <div class="situation-grid">
+            <div class="input-block">
+              <label>Key learning</label>
+              <textarea id="learning" placeholder="What is the clearest learning from this situation?"></textarea>
+            </div>
+            <div class="input-block">
+              <label>Behavior to change</label>
+              <textarea id="behaviorChange" placeholder="What behavior, decision habit, or collaboration pattern should change?"></textarea>
+            </div>
+            <div class="input-block">
+              <label>Next similar situation</label>
+              <textarea id="nextSituation" placeholder="Where is this likely to show up again?"></textarea>
+            </div>
+            <div class="input-block">
+              <label>First action</label>
+              <textarea id="firstAction" placeholder="What will you do in the next 7 days?"></textarea>
+            </div>
+          </div>
+          <div class="inline-actions">
+            <button class="btn" onclick="createSummary()">Create my leadership summary</button>
+            <button class="btn secondary" onclick="exportSummary()">Export summary</button>
+          </div>
+          <div id="summaryOutput" class="score-output"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="card">
+          <h2>Download the PDF version</h2>
+          <p>The PDF version works as a static Team Dynamics Card-style overview. The interactive version above is meant to show how Leadership Situations can become practical tools, tailored to your organization.</p>
+          <div class="inline-actions">
+            <a class="btn secondary" href="assets/turn-mistakes-leadership-discipline.pdf" download>Download PDF</a>
+          </div>
+        </div>
+        <div class="pdf-preview">
+          <div class="pdf-card"><img src="assets/turn-mistakes-page-1.jpg" alt="Turn Mistakes into a Leadership Discipline PDF page 1" /></div><div class="pdf-card"><img src="assets/turn-mistakes-page-2.jpg" alt="Turn Mistakes into a Leadership Discipline PDF page 2" /></div><div class="pdf-card"><img src="assets/turn-mistakes-page-3.jpg" alt="Turn Mistakes into a Leadership Discipline PDF page 3" /></div><div class="pdf-card"><img src="assets/turn-mistakes-page-4.jpg" alt="Turn Mistakes into a Leadership Discipline PDF page 4" /></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const focusAreas = [
+      ["expectations","Clarity of expectations","Were expectations clearly defined and understood, or open to interpretation?"],
+      ["decision","Decision-making","Were assumptions challenged and perspectives aligned before decisions were made?"],
+      ["pressure","Behavior under pressure","How did the team act when the situation became uncertain or difficult?"],
+      ["ownership","Follow-up and ownership","Was there clear ownership of both outcomes and learning?"]
+    ];
+
+    const teamPatterns = [
+      ["direct","They address mistakes directly instead of avoiding or softening them."],
+      ["language","They use consistent language when discussing setbacks."],
+      ["accountability","They separate accountability from blame."],
+      ["drivers","They look beyond outcomes to understand what drove them."],
+      ["repeatable","They follow a simple and repeatable way of reviewing situations."],
+      ["action","They turn insights into concrete changes in behavior."],
+      ["consistent","They apply this consistently, not only when it is easy."]
+    ];
+
+    const state = {pattern:"", focus:{}, team:{}};
+
+    function renderRatings(){
+      const root = document.getElementById("ratings");
+      root.innerHTML = focusAreas.map(([key,title,desc]) => `
+        <div class="rating-row">
+          <div><strong>${title}</strong><br><span class="muted">${desc}</span></div>
+          <button onclick="setRating('focus','${key}','red',this)" class="red">Red</button>
+          <button onclick="setRating('focus','${key}','yellow',this)" class="yellow">Yellow</button>
+          <button onclick="setRating('focus','${key}','green',this)" class="green">Green</button>
+        </div>
+      `).join("");
+    }
+
+    function renderTeamCheck(){
+      const root = document.getElementById("teamCheck");
+      root.innerHTML = teamPatterns.map(([key,text]) => `
+        <div class="rating-row">
+          <div>${text}</div>
+          <button onclick="setRating('team','${key}','red',this)" class="red">Red</button>
+          <button onclick="setRating('team','${key}','yellow',this)" class="yellow">Yellow</button>
+          <button onclick="setRating('team','${key}','green',this)" class="green">Green</button>
+        </div>
+      `).join("");
+    }
+
+    function setRating(type,key,value,btn){
+      state[type][key] = value;
+      const row = btn.parentElement;
+      row.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active", value);
+    }
+
+    document.querySelectorAll(".choice-card").forEach(card => {
+      card.addEventListener("click", () => {
+        document.querySelectorAll(".choice-card").forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+        state.pattern = card.dataset.pattern;
+      });
+    });
+
+    function makeVisibleInsight(){
+      const firstFocus = document.getElementById("firstFocus").value;
+      let text = "";
+      if(firstFocus === "learn"){
+        text = "Your first response already seems to move toward learning. The next challenge is to make this structured and repeatable, so it does not depend only on the mood or maturity of the people in the room.";
+      } else if(firstFocus === "fix"){
+        text = "Your first response seems to be quick fixing. This can be useful when momentum matters, but it can also mean that the team moves past the learning too quickly and repeats similar patterns later.";
+      } else if(firstFocus === "explain" || firstFocus === "defend"){
+        text = "Your first response seems to move toward explanation or defence. That is human, but it can reduce openness if it takes over the conversation before the team has understood what really drove the outcome.";
+      } else if(firstFocus === "silence"){
+        text = "Your first response seems to soften or avoid the issue. This can protect relationships in the short term, but it often leaves important learning and ownership unresolved.";
+      } else {
+        text = "Choose the first response pattern to generate a more useful insight.";
+      }
+      show("visibleOutput", text);
+    }
+
+    function patternInsight(){
+      const p = state.pattern;
+      let text = "";
+      if(p === "moveon"){
+        text = "The dominant pattern appears to be moving on quickly. This protects momentum, but the risk is that learning remains shallow and the same issue returns in a slightly different form.";
+      } else if(p === "explain"){
+        text = "The dominant pattern appears to be explanation and defence. This often happens when people care about quality and reputation, but it can make it harder to examine assumptions and decisions honestly.";
+      } else if(p === "personal"){
+        text = "The dominant pattern appears to be personalized accountability. Ownership matters, but when accountability becomes too personal, openness and learning often decline.";
+      } else if(p === "learn"){
+        text = "The dominant pattern appears to be structured learning. The challenge now is consistency. Strong teams do this not only when it is easy, but also when pressure, frustration, or fatigue makes it tempting to skip the discipline.";
+      } else {
+        text = "Select the pattern that best describes the leadership response.";
+      }
+      show("patternOutput", text);
+    }
+
+    function ratingInsight(){
+      const values = Object.entries(state.focus);
+      if(values.length < focusAreas.length){
+        show("ratingOutput","Complete all four focus areas first.");
+        return;
+      }
+      const weak = values.filter(([k,v]) => v === "red").map(([k]) => focusAreas.find(f => f[0] === k)[1]);
+      const mixed = values.filter(([k,v]) => v === "yellow").map(([k]) => focusAreas.find(f => f[0] === k)[1]);
+      let text = "";
+      if(weak.length){
+        text += "The clearest weak area appears to be: " + weak.join(", ") + ". This is where your team should focus first, because it likely had a direct influence on the outcome. ";
+      }
+      if(mixed.length){
+        text += "The mixed areas are: " + mixed.join(", ") + ". These are not necessarily broken, but they may lack consistency under pressure. ";
+      }
+      if(!weak.length && !mixed.length){
+        text = "Your focus areas are mostly strong. The useful question is whether this discipline is repeatable and visible across the teams you lead, not only within this one situation.";
+      }
+      show("ratingOutput", text);
+    }
+
+    function teamCheckInsight(){
+      const values = Object.entries(state.team);
+      if(values.length < teamPatterns.length){
+        show("teamOutput","Complete the red/yellow/green team check first.");
+        return;
+      }
+      const red = values.filter(([k,v]) => v === "red").length;
+      const yellow = values.filter(([k,v]) => v === "yellow").length;
+      let text = "";
+      if(red >= 2){
+        text = "This suggests mistakes and setbacks are not yet handled as a consistent leadership discipline. Start with one simple structure and one expectation for how the team will review outcomes that do not go as planned.";
+      } else if(yellow >= 3){
+        text = "This suggests your team has parts of the discipline in place, but it is not consistent enough. The next step is to make the language and review structure more explicit.";
+      } else {
+        text = "This suggests your team already has a strong foundation. The next opportunity is to scale the same discipline into the teams you lead, so learning becomes more consistent across the organization.";
+      }
+      show("teamOutput", text);
+    }
+
+    function createSummary(){
+      const summary = `
+        <h3>Your leadership summary</h3>
+        <p><strong>Situation:</strong><br>${val("situation")}</p>
+        <p><strong>Expected vs actual:</strong><br>Expected: ${val("expected")}<br>Actual: ${val("actual")}</p>
+        <p><strong>Key learning:</strong><br>${val("learning")}</p>
+        <p><strong>Behavior to change:</strong><br>${val("behaviorChange")}</p>
+        <p><strong>Where this will show up again:</strong><br>${val("nextSituation")}</p>
+        <p><strong>First action:</strong><br>${val("firstAction")}</p>
+      `;
+      show("summaryOutput", summary, true);
+    }
+
+    function exportSummary(){
+      const text = [
+        "Turn Mistakes into a Leadership Discipline",
+        "",
+        "Situation: " + val("situation"),
+        "Why this matters: " + val("whyMatter"),
+        "Expected: " + val("expected"),
+        "Actual: " + val("actual"),
+        "Impact: " + val("impact"),
+        "Key learning: " + val("learning"),
+        "Behavior to change: " + val("behaviorChange"),
+        "Next similar situation: " + val("nextSituation"),
+        "First action: " + val("firstAction")
+      ].join("\n");
+      const blob = new Blob([text], {type:"text/plain"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "turn-mistakes-leadership-summary.txt";
+      a.click();
+    }
+
+    function val(id){ return document.getElementById(id).value || ""; }
+    function show(id,text,html=false){
+      const el = document.getElementById(id);
+      el.innerHTML = html ? text : "<p>" + text + "</p>";
+      el.classList.add("active");
+    }
+
+    renderRatings();
+    renderTeamCheck();
+  </script>
+</body>
+</html>
