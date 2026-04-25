@@ -1,157 +1,359 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Train-the-Trainer | ChangeReadyLab</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#667085;
+  --line:#dfe5ef;
+  --brand:#244f8f;
+  --brand-dark:#163b70;
+  --brand-soft:#eaf2ff;
+  --accent:#9fcfb0;
+  --accent-soft:#eaf6ee;
+  --shadow:0 14px 34px rgba(31,41,55,.07);
+  --radius:22px;
+}
 
-<body>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-<header class="topbar">
-  <div class="wrap nav">
-    <a class="brand" href="index.html">
-      ChangeReadyLab
-      <small>Growth Mindset 2.0 and Human + AI for leadership teams</small>
-    </a>
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg,#f8fafc 0%, var(--bg) 100%);
+  line-height:1.68;
+  font-size:16px;
+}
 
-    <nav class="navlinks">
-      <a href="index.html">Home</a>
-      <a href="theory.html">Theory</a>
-      <a href="tools.html">Tools</a>
-      <a href="learning-programs.html">Programs</a>
-      <a href="train-the-trainer.html">Train-the-Trainer</a>
-      <a href="newsletter.html">Newsletter</a>
-    </nav>
-  </div>
-</header>
+.wrap{
+  width:min(1120px, calc(100% - 40px));
+  margin:0 auto;
+}
 
-<main>
+.topbar{
+  background:rgba(255,255,255,.9);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="card hero-card">
-        <div class="kicker">Train-the-Trainer</div>
+.nav{
+  min-height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
 
-        <h1>
-          Build internal capability to teach, facilitate, and scale
-        </h1>
+.brand{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:800;
+  font-size:20px;
+  line-height:1.15;
+  letter-spacing:-.03em;
+}
 
-        <p class="lead">
-          Many organizations invest heavily in leadership development, but the real challenge is making it stick. 
-          Train-the-Trainer is about building the internal capability to run, adapt, and scale learning using your own people, your own context, and your own language.
-        </p>
-      </div>
-    </div>
-  </section>
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-weight:500;
+  font-size:12px;
+  margin-top:5px;
+}
 
-  <!-- WHY + HOW -->
-  <section class="section">
-    <div class="wrap grid-2">
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
 
-      <div class="card">
-        <h2>Why this matters</h2>
-        <p>
-          Leadership development often creates strong moments. A workshop lands well. A session creates energy. 
-          But after that, teams return to daily work and the learning fades.
-        </p>
-        <p>
-          The issue is rarely the quality of the content. It is the lack of internal capability to continue the work.
-        </p>
-        <p>
-          Train-the-Trainer shifts the focus from delivering sessions to building capability. It helps you develop people 
-          who can guide reflection, challenge thinking, and connect learning directly to real work.
-        </p>
-      </div>
+.navlinks a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
 
-      <div class="card">
-        <h2>How we build capability</h2>
-        <p>
-          We work with a small group of internal facilitators. This can be HR partners, People leaders, or selected 
-          individuals who already play a role in leadership development.
-        </p>
-        <p>
-          Together, we build both understanding and practice. This includes facilitation skills, use of tools and interactions, 
-          and confidence in guiding leadership teams through real situations.
-        </p>
-        <p>
-          The work is practical. It includes co-facilitation, feedback loops, and adapting tools to your own language and priorities.
-        </p>
-      </div>
+.navlinks a:hover{
+  color:var(--brand);
+}
 
-    </div>
-  </section>
+.hero{
+  padding:34px 0 24px;
+}
 
-  <!-- CONTENT -->
-  <section class="section">
-    <div class="wrap">
-      <div class="card">
+.section{
+  padding:26px 0;
+}
 
-        <h2>What Train-the-Trainer can include</h2>
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:34px;
+  align-items:center;
+}
 
-        <ul class="list-clean">
-          <li>Introduction to Growth Mindset 2.0 and Human + AI perspectives</li>
-          <li>Guidance on using tools and interactions in real leadership situations</li>
-          <li>Practice in running Team Dynamics Card-style conversations</li>
-          <li>Co-design of tailored learning programs for your leadership teams</li>
-          <li>Coaching and feedback for internal facilitators</li>
-          <li>Support in building a repeatable internal rhythm for learning and application</li>
-        </ul>
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:34px;
+}
 
-      </div>
-    </div>
-  </section>
+.hero-card{
+  padding:42px;
+}
 
-  <!-- OUTCOME + AUDIENCE -->
-  <section class="section">
-    <div class="wrap grid-2">
+.kicker,
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  padding:7px 12px;
+  border-radius:999px;
+  background:var(--brand-soft);
+  color:var(--brand-dark);
+  border:1px solid #d7e6ff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.02em;
+  margin-bottom:18px;
+}
 
-      <div class="card">
-        <h2>Outcome</h2>
-        <p>
-          You build the ability to run leadership development from the inside. 
-          Learning becomes more integrated into daily work, more repeatable, and more aligned with your real challenges.
-        </p>
-        <p>
-          Over time, this reduces dependency on external support and increases both relevance and impact.
-        </p>
-      </div>
+h1,h2,h3,h4{
+  margin:0 0 16px;
+  line-height:1.16;
+  letter-spacing:-.04em;
+  color:var(--text);
+}
 
-      <div class="card">
-        <h2>Who this is for</h2>
-        <p>
-          HR and People teams, L&D teams, internal facilitators, and leadership development professionals who want 
-          more practical ways to support leadership teams.
-        </p>
-        <p>
-          It also fits organizations that want to move from isolated programs to a more continuous and internally driven way of learning.
-        </p>
-      </div>
+h1{
+  font-size:clamp(32px,3.6vw,48px);
+  max-width:820px;
+}
 
-    </div>
-  </section>
+h2{
+  font-size:clamp(24px,2.6vw,32px);
+}
 
-</main>
+h3{
+  font-size:21px;
+}
 
-<footer class="footer">
-  <div class="wrap footer-grid">
-    <div>
-      <h3>ChangeReadyLab</h3>
-      <p class="small muted">
-        Practical tools, interactions, and learning programs to build change readiness in leadership teams.
-      </p>
-    </div>
+h4{
+  font-size:18px;
+}
 
-    <div>
-      <h4>Contact</h4>
-      <p class="small muted">
-        stefan@stefanlindegaard.com
-      </p>
-    </div>
-  </div>
-</footer>
+.lead{
+  font-size:clamp(17px,1.55vw,20px);
+  line-height:1.62;
+  color:#344054;
+  max-width:800px;
+  margin-bottom:18px;
+}
 
-</body>
-</html>
+p{
+  margin:0 0 16px;
+}
+
+.muted,
+.small.muted{
+  color:var(--muted);
+}
+
+.small{
+  font-size:14px;
+}
+
+.inline-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:24px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:12px 18px;
+  border-radius:13px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  border:1px solid transparent;
+  background:var(--brand);
+  color:#fff;
+}
+
+.btn:hover{
+  background:var(--brand-dark);
+}
+
+.btn.secondary{
+  background:#fff;
+  color:var(--text);
+  border-color:var(--line);
+}
+
+.btn.secondary:hover{
+  background:var(--brand-soft);
+  color:var(--brand-dark);
+}
+
+.hero-image img{
+  width:100%;
+  display:block;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+
+.list-clean{
+  padding-left:20px;
+  margin:0;
+}
+
+.list-clean li{
+  margin-bottom:10px;
+}
+
+.notice{
+  margin-top:18px;
+  padding:16px 18px;
+  border-radius:16px;
+  background:var(--accent-soft);
+  border:1px solid rgba(159,207,176,.55);
+  color:#264532;
+}
+
+.tool-box{
+  background:linear-gradient(180deg,rgba(234,246,238,.65),#fff);
+}
+
+.mini-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:16px 0;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  color:var(--brand-dark);
+  background:var(--brand-soft);
+  border:1px solid #d7e6ff;
+}
+
+.footer{
+  margin-top:44px;
+  padding:42px 0;
+  background:#eef2f7;
+  border-top:1px solid var(--line);
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+
+.footer a{
+  color:var(--brand);
+}
+
+input,textarea,select{
+  font-family:inherit;
+}
+
+@media (max-width: 920px){
+  .nav{
+    align-items:flex-start;
+    flex-direction:column;
+    padding:18px 0;
+    gap:14px;
+  }
+
+  .navlinks{
+    gap:12px 16px;
+  }
+
+  .hero-grid,
+  .grid-2,
+  .grid-3,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-card{
+    padding:32px 26px;
+  }
+
+  h1{
+    font-size:clamp(31px,8vw,42px);
+  }
+
+  .card{
+    padding:26px;
+  }
+}
+
+@media (max-width: 520px){
+  .wrap{
+    width:min(100% - 28px, 1120px);
+  }
+
+  .navlinks a{
+    font-size:13px;
+  }
+
+  .hero{
+    padding-top:20px;
+  }
+
+  .section{
+    padding:18px 0;
+  }
+
+  .card{
+    border-radius:18px;
+    padding:22px;
+  }
+
+  .hero-card{
+    padding:25px 22px;
+  }
+
+  .lead{
+    font-size:17px;
+  }
+
+  .inline-actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+}
