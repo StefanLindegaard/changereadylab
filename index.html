@@ -1,173 +1,492 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="ChangeReadyLab helps leaders, teams and organizations build the change readiness capabilities needed to make AI transformation succeed.">
-  <title>ChangeReadyLab | Making AI Transformation Work Through Change Readiness</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ChangeReadyLab helps organizations make AI transformation work through change readiness. Explore a tailored workshop and request the free AI Change Readiness Tool Book.">
+<title>ChangeReadyLab | Making AI Transformation Work</title>
+<style>
+:root {
+  --ink:#1c2b35;
+  --muted:#516473;
+  --teal:#16849a;
+  --deep:#12677a;
+  --soft:#f2f8fa;
+  --line:#d9e7ea;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;scroll-padding-top:100px}
+body {
+  margin:0;
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  color:var(--ink);
+  background:white;
+}
+a {color:inherit}
+.wrap {width:min(1140px,calc(100% - 48px));margin:auto}
+header {
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:white;
+  border-bottom:1px solid var(--line);
+}
+.nav {
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+.brand {
+  font-size:23px;
+  font-weight:800;
+  text-decoration:none;
+  letter-spacing:-.04em;
+}
+.brand span {color:var(--teal)}
+nav {display:flex;gap:10px 22px;flex-wrap:wrap}
+nav a {text-decoration:none;font-size:14px;font-weight:650}
+nav a:hover {color:var(--teal)}
+h1,h2,h3 {
+  letter-spacing:-.035em;
+  line-height:1.2;
+  margin:0 0 20px;
+}
+h1 {font-size:clamp(36px,4.6vw,60px)}
+h1 span {color:var(--teal)}
+h2 {font-size:clamp(28px,3vw,41px)}
+h3 {font-size:21px}
+p {margin:0 0 19px}
+.eyebrow {
+  font-size:12px;
+  letter-spacing:.14em;
+  font-weight:800;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:17px;
+}
+.hero {padding:80px 0 90px}
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.07fr .93fr;
+  gap:60px;
+  align-items:center;
+}
+.lead {
+  color:var(--muted);
+  font-size:21px;
+  line-height:1.55;
+  margin:25px 0;
+}
+.hero img {
+  width:100%;
+  height:auto;
+  border-radius:16px;
+  display:block;
+}
+.buttons {display:flex;gap:12px;flex-wrap:wrap}
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  padding:13px 20px;
+  border-radius:9px;
+  min-height:47px;
+  font-size:14px;
+  font-weight:750;
+  line-height:1.4;
+}
+.primary {background:var(--teal);color:white}
+.primary:hover {background:var(--deep)}
+.secondary {
+  border:1px solid #a2ccd3;
+  color:var(--deep);
+  background:white;
+}
+.secondary:hover {background:var(--soft)}
+section.block {padding:86px 0}
+.soft {background:var(--soft)}
+.two {
+  display:grid;
+  grid-template-columns:.83fr 1.17fr;
+  gap:82px;
+}
+.reading {max-width:700px}
+.reading p:last-child {margin-bottom:0}
+.key {
+  margin-top:25px;
+  border-left:4px solid var(--teal);
+  padding-left:20px;
+  font-size:19px;
+  font-weight:600;
+}
+.workshop-grid {
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:58px;
+  align-items:center;
+}
+.workshop-grid ul {padding-left:22px}
+.workshop-grid li {margin:10px 0}
+.price-card {
+  border:1px solid var(--line);
+  border-top:5px solid var(--teal);
+  border-radius:15px;
+  padding:36px;
+  background:white;
+  box-shadow:0 14px 30px rgba(26,70,81,.05);
+}
+.price {
+  font-size:51px;
+  font-weight:800;
+  letter-spacing:-.05em;
+  line-height:1.2;
+  margin:18px 0 2px;
+}
+.fine {font-size:14px;color:var(--muted)}
+.price-card .details {
+  padding:20px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  margin:22px 0;
+}
+.price-card .btn {width:100%}
+.head {max-width:800px;margin-bottom:37px}
+.head p {color:var(--muted)}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+}
+.card {
+  padding:30px 26px;
+  border:1px solid var(--line);
+  border-top:4px solid var(--teal);
+  border-radius:15px;
+  background:white;
+}
+.number {color:var(--teal);font-weight:800;margin-bottom:18px}
+.card p,.result p {font-size:16px;color:var(--muted)}
+.quote {
+  font-size:24px;
+  line-height:1.4;
+  font-weight:750;
+  color:var(--deep);
+  margin-top:32px;
+}
+.toolbook {
+  display:grid;
+  grid-template-columns:1fr 180px;
+  gap:45px;
+  align-items:center;
+  background:#e6f4f6;
+  border:1px solid #cfe8ec;
+  border-radius:16px;
+  padding:42px 48px;
+}
+.book-cover {
+  background:white;
+  border:2px solid #81b9c3;
+  min-height:225px;
+  padding:21px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:8px 8px #c5e4e9;
+  color:var(--deep);
+  font-weight:800;
+  line-height:1.25;
+}
+.book-cover small {font-size:12px;color:var(--muted)}
+.results {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+.result {
+  border:1px solid var(--line);
+  background:white;
+  border-radius:12px;
+  padding:25px;
+}
+.result h3 {color:var(--deep);font-size:19px}
+.about {
+  margin-top:25px;
+  background:var(--soft);
+  padding:25px;
+  border-left:4px solid var(--teal);
+}
+.contact {
+  background:var(--deep);
+  color:white;
+  text-align:center;
+  padding:85px 0;
+}
+.contact .wrap {max-width:790px}
+.contact .eyebrow,.contact p {color:#d7eef2}
+.contact h2 {color:white}
+.contact .question {
+  font-size:22px;
+  font-weight:650;
+  color:white;
+}
+.contact .btn {
+  background:white;
+  color:var(--deep);
+  margin:12px 0 20px;
+}
+.contact .email {font-size:14px}
+footer {
+  background:#102f39;
+  color:white;
+  padding:28px 0;
+}
+.foot {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  font-size:13px;
+}
+.foot span {color:#c9dae0}
+a:focus-visible {outline:3px solid orange;outline-offset:3px}
+@media(max-width:980px) {
+  .nav {padding:16px 0;flex-wrap:wrap}
+  .hero-grid {gap:35px}
+  .two {gap:45px}
+  .workshop-grid {gap:30px}
+  .cards {grid-template-columns:1fr}
+}
+@media(max-width:700px) {
+  .wrap {width:calc(100% - 36px)}
+  body {font-size:16px}
+  .nav {gap:12px}
+  .brand {font-size:21px}
+  nav {gap:8px 14px}
+  nav a {font-size:12px}
+  .hero {padding:50px 0 60px}
+  .hero-grid,.two,.workshop-grid,.results,.toolbook {
+    grid-template-columns:1fr;
+  }
+  .lead {font-size:19px}
+  .buttons .btn {width:100%}
+  section.block {padding:62px 0}
+  .price-card {padding:27px}
+  .toolbook {padding:28px}
+  .book-cover {display:none}
+  .foot {flex-direction:column;align-items:flex-start}
+  .contact {padding:70px 0}
+}
+@media(prefers-reduced-motion:reduce) {
+  html {scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="#top" aria-label="ChangeReadyLab homepage">ChangeReady<span>Lab</span></a>
-      <nav aria-label="Main navigation">
-        <a href="#challenge">The Challenge</a>
-        <a href="#offer">What We Offer</a>
-        <a href="#approach">Our Approach</a>
-        <a href="#about">About</a>
-        <a class="nav-contact" href="#contact">Get in Touch <span aria-hidden="true">↗</span></a>
-      </nav>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">ChangeReady<span>Lab</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#challenge">The Challenge</a>
+      <a href="#workshop">Workshop</a>
+      <a href="#services">What We Offer</a>
+      <a href="#approach">Our Approach</a>
+      <a href="#toolbook">Free Tool Book</a>
+      <a href="#contact">Contact ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">AI Change Readiness</p>
+      <h1>Making AI Transformation Work Through <span>Change Readiness</span></h1>
+      <p class="lead">We help leaders, teams and organizations build the human and organizational capabilities needed to make AI transformation succeed.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#workshop">Explore the €2,000 Workshop ↗</a>
+        <a class="btn secondary" href="#toolbook">Get the Free Tool Book ↗</a>
+      </div>
     </div>
-  </header>
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-heading">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">AI CHANGE READINESS</p>
-          <h1 id="hero-heading">Making AI Transformation Work Through <span>Change Readiness</span></h1>
-          <p class="intro">We help leaders, teams and organizations build the human and organizational capabilities needed to make AI transformation succeed.</p>
-          <a class="button primary" href="#contact">Let's Explore Your AI Change Readiness <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="hero-visual">
-          <img src="assets/team-spiral.jpeg" alt="Three turquoise spiral-headed figures collaborating and sharing an idea" width="800" height="800" fetchpriority="high">
-        </div>
-      </div>
-    </section>
+    <img src="assets/team-spiral.jpeg" width="800" height="800" alt="Three spiral-headed figures collaborating around an idea">
+  </div>
+</section>
 
-    <section class="section soft" id="challenge" aria-labelledby="challenge-heading">
-      <div class="container two-column">
-        <div><p class="eyebrow">THE CHALLENGE</p><h2 id="challenge-heading">Turning AI Ambitions into Business Results</h2></div>
-        <div class="reading">
-          <p>Organizations are investing in AI strategies, technologies, skills and pilots. Yet many struggle to turn these investments into meaningful business results, whether through greater efficiency and effectiveness, new ways of working or new business opportunities.</p>
-          <p>AI will reshape how we work, collaborate, lead and organize our businesses. This creates significant opportunities, but also uncertainty, challenges and concerns for leaders, teams and organizations.</p>
-          <p>Making AI transformation work requires more than technological readiness and AI skills. It requires the ability to navigate, embrace and implement change.</p>
-          <p class="key-point">This is why organizations need to strengthen their change readiness capabilities. In the context of AI transformation, we call this <strong>AI Change Readiness.</strong></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="value" aria-labelledby="value-heading">
-      <div class="container narrow-center">
-        <p class="eyebrow">HOW WE CREATE VALUE</p>
-        <h2 id="value-heading">Stronger Change Readiness. Better AI Transformation.</h2>
-        <p class="large-copy">We help organizations make AI transformation work by strengthening the mindsets, behaviors, leadership practices and organizational capabilities that enable people to navigate, embrace and implement change.</p>
-        <p>Our focus is not simply on AI adoption. It is on developing lasting change readiness capabilities through real AI transformation challenges.</p>
-      </div>
-    </section>
-
-    <section class="section soft" id="offer" aria-labelledby="offer-heading">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">WHAT WE OFFER</p>
-          <h2 id="offer-heading">Practical Support for AI Change Readiness</h2>
-          <p>We work with organizations through focused workshops, capability-building programs and longer-term initiatives that connect AI transformation with practical change readiness development.</p>
-          <p>Our work typically focuses on three interconnected areas:</p>
-        </div>
-        <div class="offering-grid">
-          <article class="offering">
-            <span class="offering-number">01</span>
-            <h3>AI Change Readiness Assessment &amp; Leadership Alignment</h3>
-            <p>Through facilitated workshops, assessments and leadership discussions, we help organizations identify readiness gaps, understand barriers and opportunities, and align leaders and teams around the changes required for successful AI implementation.</p>
-          </article>
-          <article class="offering">
-            <span class="offering-number">02</span>
-            <h3>Leadership &amp; Team Capability Building</h3>
-            <p>We work with leaders and teams to strengthen the mindsets, behaviors and practical capabilities needed to navigate AI-driven change. This includes developing their ability to experiment, learn, adapt, collaborate and implement new ways of working through real AI challenges.</p>
-          </article>
-          <article class="offering">
-            <span class="offering-number">03</span>
-            <h3>AI Change Readiness Activation &amp; Implementation</h3>
-            <p>We help organizations turn change readiness into everyday practice through leadership routines, team tools, AI Ambassador programs, internal networks and organizational processes that support AI implementation and lasting capability development.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="approach" aria-labelledby="approach-heading">
-      <div class="container two-column">
-        <div>
-          <p class="eyebrow">OUR APPROACH</p>
-          <h2 id="approach-heading">Building Capabilities While Driving Change</h2>
-          <p class="approach-statement">Build the capacity to change <em>while you are changing.</em></p>
-        </div>
-        <div class="reading">
-          <p>We bring our own tools, frameworks and approaches developed specifically to strengthen change readiness in the context of AI transformation.</p>
-          <p>Rather than offering standardized training programs, we co-create and adapt our work to each organization's specific challenges, ambitions and circumstances.</p>
-          <p>Our approach combines mindset development, practical change readiness principles, leadership and team development, and organizational capability building.</p>
-          <p>We embed these approaches in real work, AI initiatives and organizational processes, helping organizations build the capacity to change while they are changing.</p>
-          <p class="key-point">The result is not only stronger AI Change Readiness today, but lasting organizational capabilities for navigating change tomorrow.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section soft" id="outcomes" aria-labelledby="outcomes-heading">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">THE OUTCOMES WE HELP CREATE</p>
-          <h2 id="outcomes-heading">From AI Initiatives to Lasting Impact</h2>
-        </div>
-        <div class="outcome-grid">
-          <div class="outcome">
-            <h3>Accelerate AI implementation</h3>
-            <p>Help leaders and teams move from AI experimentation and pilots to practical implementation and new ways of working.</p>
-          </div>
-          <div class="outcome">
-            <h3>Improve business performance</h3>
-            <p>Enable teams to use AI-driven change to improve efficiency, effectiveness and value creation.</p>
-          </div>
-          <div class="outcome">
-            <h3>Unlock new opportunities</h3>
-            <p>Strengthen the ability to challenge assumptions, experiment and identify new business and innovation opportunities.</p>
-          </div>
-          <div class="outcome">
-            <h3>Strengthen leadership and team performance</h3>
-            <p>Equip leaders and teams to navigate uncertainty, overcome barriers and make better decisions during change.</p>
-          </div>
-          <div class="outcome">
-            <h3>Build lasting organizational capabilities</h3>
-            <p>Embed mindsets, behaviors, routines and processes that improve the organization's ability to navigate future changes.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about" aria-labelledby="about-heading">
-      <div class="container two-column">
-        <div>
-          <p class="eyebrow">WHO WE WORK WITH</p>
-          <h2 id="about-heading">Working with the People Leading AI Change</h2>
-        </div>
-        <div class="reading">
-          <p>We primarily work with AI transformation leaders, AI program owners, business executives and functional leaders responsible for AI implementation.</p>
-          <p>We also collaborate with HR, Learning &amp; Development, organizational development functions, AI Ambassadors and internal change networks to build and embed these capabilities across organizations.</p>
-          <div class="about-note">
-            <h3>About ChangeReadyLab</h3>
-            <p>ChangeReadyLab is led by Stefan Lindegaard, whose work draws on years of international experience in corporate innovation, leadership, mindset and organizational change. The focus is on helping people and organizations turn change into practical progress.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-      <div class="container contact-inner">
-        <p class="eyebrow">LET'S CONNECT</p>
-        <h2 id="contact-heading">Let's Explore Your AI Change Readiness</h2>
-        <p class="contact-question">How ready are your leaders, teams and organization for the changes that AI brings?</p>
-        <p>Let's explore your challenges, opportunities and how stronger change readiness can help make your AI transformation work.</p>
-        <a class="button light" href="mailto:stefan@stefanlindegaard.com?subject=AI%20Change%20Readiness%20Conversation">Contact Stefan Lindegaard <span aria-hidden="true">↗</span></a>
-        <p class="contact-email"><a href="mailto:stefan@stefanlindegaard.com">stefan@stefanlindegaard.com</a></p>
-      </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <strong>ChangeReadyLab</strong>
-      <span>Making AI Transformation Work Through Change Readiness</span>
-      <a href="#top">Back to top ↑</a>
+<section class="block soft" id="challenge">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow">The Challenge</p>
+      <h2>Turning AI Ambitions into Business Results</h2>
     </div>
-  </footer>
+    <div class="reading">
+      <p>Organizations are investing in AI strategies, technologies, skills and pilots. Yet many struggle to turn these investments into meaningful business results, whether through greater efficiency and effectiveness, new ways of working or new business opportunities.</p>
+      <p>AI will reshape how we work, collaborate, lead and organize our businesses. This creates significant opportunities, but also uncertainty, challenges and concerns for leaders, teams and organizations.</p>
+      <p>Making AI transformation work requires more than technological readiness and AI skills. It requires the ability to navigate, embrace and implement change.</p>
+      <p class="key">This is why organizations need to strengthen their change readiness capabilities. In the context of AI transformation, we call this AI Change Readiness.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="workshop">
+  <div class="wrap workshop-grid">
+    <div>
+      <p class="eyebrow">A Practical Starting Point</p>
+      <h2>AI Change Readiness Workshop</h2>
+      <p><strong>How ready are your leaders, teams and organization for AI-driven change?</strong></p>
+      <p>A tailored four-hour workshop to explore your AI transformation challenges, identify barriers and opportunities, and strengthen your approach to AI Change Readiness.</p>
+      <h3>What you get</h3>
+      <ul>
+        <li>A four-hour workshop tailored to your organization's needs, opportunities and situation.</li>
+        <li>An assessment based on workshop discussions and observations.</li>
+        <li>A concise 1–2 page written summary with my observations and suggestions for next steps.</li>
+      </ul>
+    </div>
+    <aside class="price-card">
+      <p class="eyebrow">Four-hour workshop</p>
+      <div class="price">€2,000</div>
+      <p class="fine">Plus travel expenses. VAT, if applicable, is additional.</p>
+      <p class="details"><strong>Tailored workshop + written assessment</strong><br><span class="fine">A practical starting point with clear suggested next steps.</span></p>
+      <a class="btn primary" href="mailto:stefan@stefanlindegaard.com?subject=AI%20Change%20Readiness%20Workshop">Ask About the Workshop ↗</a>
+      <p class="fine" style="margin-top:14px">We'll discuss your situation and tailor the workshop before confirming.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="block soft" id="services">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">What We Offer</p>
+      <h2>Support Beyond the Starting Point</h2>
+      <p>We help organizations strengthen the mindsets, behaviors, leadership practices and organizational capabilities that enable people to navigate, embrace and implement change.</p>
+      <p>We work through focused workshops, capability-building programs and longer-term initiatives.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="number">01</div>
+        <h3>Assessment &amp; Leadership Alignment</h3>
+        <p>Identify readiness gaps, understand barriers and opportunities, and align leaders and teams around the changes required for AI implementation.</p>
+      </article>
+      <article class="card">
+        <div class="number">02</div>
+        <h3>Leadership &amp; Team Capability Building</h3>
+        <p>Strengthen the mindsets, behaviors and capabilities to experiment, learn, adapt, collaborate and implement new ways of working through real AI challenges.</p>
+      </article>
+      <article class="card">
+        <div class="number">03</div>
+        <h3>Activation &amp; Implementation</h3>
+        <p>Embed change readiness through leadership routines, team tools, AI Ambassador programs, internal networks and organizational processes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="approach">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow">Our Approach</p>
+      <h2>Building Capabilities While Driving Change</h2>
+      <p class="quote">Build the capacity to change while you are changing.</p>
+    </div>
+    <div class="reading">
+      <p>We bring our own tools, frameworks and approaches developed specifically to strengthen change readiness in the context of AI transformation.</p>
+      <p>Rather than offering standardized training programs, we co-create and adapt our work to each organization's specific challenges, ambitions and circumstances.</p>
+      <p>We embed mindset development, leadership and team practices, and organizational capability building in real AI initiatives and everyday work.</p>
+      <p class="key">The result is stronger AI Change Readiness today and lasting organizational capabilities for navigating change tomorrow.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block soft" id="toolbook">
+  <div class="wrap toolbook">
+    <div>
+      <p class="eyebrow">Free Practical Resource</p>
+      <h2>AI Change Readiness Tool Book</h2>
+      <p>Explore practical tools and approaches to help leaders and teams navigate AI-driven change, strengthen mindsets and build lasting change readiness capabilities.</p>
+      <p><strong>Interested in a free copy?</strong> Just get in touch and ask for the Tool Book.</p>
+      <a class="btn primary" href="mailto:stefan@stefanlindegaard.com?subject=Request%20the%20AI%20Change%20Readiness%20Tool%20Book">Request Your Free Copy ↗</a>
+    </div>
+    <div class="book-cover" aria-hidden="true">
+      <div style="height:6px;width:70px;background:var(--teal)"></div>
+      <div>AI CHANGE<br>READINESS<br>TOOL BOOK</div>
+      <small>ChangeReadyLab</small>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="outcomes">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The Outcomes We Help Create</p>
+      <h2>From AI Initiatives to Lasting Impact</h2>
+    </div>
+    <div class="results">
+      <article class="result">
+        <h3>Accelerate AI implementation</h3>
+        <p>Move from AI experiments and pilots to practical implementation and new ways of working.</p>
+      </article>
+      <article class="result">
+        <h3>Improve business performance</h3>
+        <p>Improve efficiency, effectiveness and value creation through AI-driven change.</p>
+      </article>
+      <article class="result">
+        <h3>Unlock new opportunities</h3>
+        <p>Challenge assumptions, experiment and identify new business and innovation opportunities.</p>
+      </article>
+      <article class="result">
+        <h3>Strengthen leadership and team performance</h3>
+        <p>Navigate uncertainty, overcome barriers and make better decisions during change.</p>
+      </article>
+      <article class="result">
+        <h3>Build lasting organizational capabilities</h3>
+        <p>Embed mindsets, behaviors, routines and processes for navigating future changes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block soft" id="about">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow">Who We Work With</p>
+      <h2>Working with the People Leading AI Change</h2>
+    </div>
+    <div class="reading">
+      <p>We primarily work with AI transformation leaders, AI program owners, business executives and functional leaders responsible for AI implementation.</p>
+      <p>We also collaborate with HR, Learning &amp; Development, organizational development functions, AI Ambassadors and internal change networks to build and embed these capabilities.</p>
+      <div class="about">
+        <h3>About ChangeReadyLab</h3>
+        <p>ChangeReadyLab is led by Stefan Lindegaard, drawing on international experience in corporate innovation, leadership, mindset and organizational change. Our focus is helping people and organizations turn change into practical progress.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Let's Connect</p>
+    <h2>Let's Explore Your AI Change Readiness</h2>
+    <p class="question">How ready are your leaders, teams and organization for the changes that AI brings?</p>
+    <p>Ask about the workshop, request the free Tool Book, or explore how we can support your wider AI transformation.</p>
+    <a class="btn" href="mailto:stefan@stefanlindegaard.com?subject=AI%20Change%20Readiness%20Conversation">Contact Stefan Lindegaard ↗</a>
+    <p><a class="email" href="mailto:stefan@stefanlindegaard.com">stefan@stefanlindegaard.com</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <strong>ChangeReadyLab</strong>
+    <span>Making AI Transformation Work Through Change Readiness</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
 </body>
 </html>
